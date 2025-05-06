@@ -1,0 +1,280 @@
+---
+title: "Evaluación 2 - Parte 3: Distribución Hipergeométrica"
+author: "Daniela Fishwick"
+date: "05/05/2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejercicios de Distribución Hipergeométrica
+
+### Pregunta 1: Extracción de Pelotas
+
+En una bolsa hay 12 pelotas, de las cuales 5 son rojas. Se extraen 4 pelotas sin reemplazo. ¿Cuál es la probabilidad de extraer exactamente 2 pelotas rojas?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 12
+-   Número de éxitos en la población ($K$): 5
+-   Tamaño de la muestra ($n$): 4
+-   Número de éxitos deseados en la muestra ($k$): 2
+
+Para calcular la probabilidad exacta \( P(X = k) \), usamos la función `dhyper()` en R:
+
+```{r}
+# Cálculo de la probabilidad
+N <- 12
+K <- 5
+n <- 4
+k <- 2
+prob_exacta <- dhyper(k, K, N - K, n)
+cat("La probabilidad de extraer exactamente 2 pelotas rojas es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 2: Componentes Defectuosos
+
+Una caja contiene 8 componentes defectuosos y 32 en buen estado. Se seleccionan 5 al azar sin reemplazo. ¿Cuál es la probabilidad de que a lo más 1 sea defectuoso?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+Este es un problema de distribución hipergeométrica.
+
+-   Tamaño de la población ($N$): 40
+-   Número de éxitos en la población ($K$): 8
+-   Tamaño de la muestra ($n$): 5
+-   Número de éxitos deseados en la muestra ($k$): 0 o 1
+
+Para calcular la probabilidad acumulada \( P(X \le 1) \), usamos la función `phyper()` en R:
+
+```{r}
+N <- 40
+K <- 8
+n <- 5
+k <- 1  # Calcula P(X <= 1)
+prob_acumulada <- phyper(k, K, N - K, n)
+cat("La probabilidad de encontrar como máximo 1 componente defectuoso es:", prob_acumulada, "\n")
+```
+
+</div>
+
+### Pregunta 3: Rifa de Boletos
+
+En una rifa hay 15 boletos premiados entre 100 en total. Si una persona compra 10 boletos, ¿cuál es la probabilidad de ganar exactamente 3 premios?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 100
+-   Número de éxitos en la población ($K$): 15
+-   Tamaño de la muestra ($n$): 10
+-   Número de éxitos deseados en la muestra ($k$): 3
+
+Para calcular la probabilidad exacta \( P(X = 3) \), usamos la función `dhyper()` en R:
+
+```{r}
+# Cálculo de la probabilidad
+N <- 100
+K <- 15
+n <- 10
+k <- 3
+prob_exacta <- dhyper(k, K, N - K, n)
+cat("La probabilidad de ganar exactamente 3 premios es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 4: Bombillas Defectuosas
+
+Una muestra de 7 bombillas se selecciona de un lote de 50 bombillas, donde 8 están defectuosas. ¿Cuál es la probabilidad de encontrar como máximo 2 bombillas defectuosas?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 50
+-   Número de éxitos en la población ($K$): 8
+-   Tamaño de la muestra ($n$): 7
+-   Número de éxitos deseados en la muestra ($k$): 0, 1 o 2
+
+Para calcular la probabilidad acumulada \( P(X \le 2) \), usamos la función `phyper()` en R:
+
+```{r}
+# Cálculo de la probabilidad acumulada
+N <- 50
+K <- 8
+n <- 7
+k <- 2
+prob_acumulada <- phyper(k, K, N - K, n)
+cat("La probabilidad de encontrar como máximo 2 bombillas defectuosas es:", prob_acumulada, "\n")
+```
+
+</div> 
+
+### Pregunta 5: Estudiantes Aprobados
+
+De un total de 30 estudiantes, 12 aprobaron un examen. Se eligen 6 estudiantes al azar. ¿Qué cantidad máxima de aprobados se espera sin superar el 95% de probabilidad acumulada?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 30
+-   Número de éxitos en la población ($K$): 12
+-   Tamaño de la muestra ($n$): 6
+-   Probabilidad acumulada deseada ($q$): 0.95
+
+Para encontrar el cuantil \( k \) tal que \( P(X \le k) \ge 0.95 \), usamos la función `qhyper()` en R:
+
+```{r}
+N <- 30
+K <- 12
+n <- 6
+q <- 0.95
+cuantil <- qhyper(q, K, N - K, n)
+cat("La cantidad máxima de estudiantes aprobados sin superar el 95% de probabilidad acumulada es:", cuantil, "\n")
+```
+
+</div>
+
+### Pregunta 6: Libros en Mal Estado
+
+En una biblioteca hay 100 libros, de los cuales 20 están en mal estado. Si se revisan 15 libros al azar, ¿cuál es la probabilidad de que exactamente 5 estén en mal estado?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 100
+-   Número de éxitos en la población ($K$): 20
+-   Tamaño de la muestra ($n$): 15
+-   Número deseado de éxitos en la muestra ($k$): 5
+
+Para calcular la probabilidad exacta \( P(X = k) \), usamos la función `dhyper()` en R:
+
+```{r}
+# Cálculo de la probabilidad
+N <- 100
+K <- 20
+n <- 15
+k <- 5
+prob_exacta <- dhyper(k, K, N - K, n)
+cat("La probabilidad de que exactamente 5 libros estén en mal estado es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 7: Piezas Defectuosas
+
+Un lote contiene 25 piezas, 5 de las cuales son defectuosas. Se extraen 8 piezas. ¿Cuál es la probabilidad de encontrar al menos 2 defectuosas?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 25
+-   Número de éxitos en la población ($K$): 5
+-   Tamaño de la muestra ($n$): 8
+-   Número deseado de éxitos en la muestra ($k$): 2, 3, 4, o 5
+
+Para calcular la probabilidad acumulada \( P(X \ge 2) \), usamos la función `phyper()` en R.  Es más eficiente calcular la probabilidad del complemento, \( 1 - P(X \le 1) \):
+
+```{r}
+# para P(X >= 2), donde k es 1
+N <- 25
+K <- 5
+n <- 8
+k <- 1
+prob_al_menos_2 <- 1 - phyper(k, K, N - K, n)
+cat("La probabilidad de encontrar al menos 2 piezas defectuosas es:", prob_al_menos_2, "\n")
+```
+
+</div>
+
+### Pregunta 8: Bolas en una Urna
+
+Una urna contiene 10 bolas verdes y 30 bolas azules. Se extraen 6 bolas. ¿Cuál es la probabilidad de que salgan al menos 3 bolas verdes?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 40
+-   Número de éxitos en la población ($K$): 10
+-   Tamaño de la muestra ($n$): 6
+-   Número deseado de éxitos en la muestra ($k$): 3, 4, 5, o 6
+
+Para calcular la probabilidad acumulada \( P(X \ge 3) \), usamos la función `phyper()` en R, nuevamente usando el complemento:
+
+```{r}
+N <- 40
+K <- 10
+n <- 6
+k <- 2 # Calcula P(X <= 2)
+prob_al_menos_3 <- 1 - phyper(k, K, N - K, n)
+cat("La probabilidad de encontrar al menos 3 bolas verdes es:", prob_al_menos_3, "\n")
+```
+
+</div>
+
+### Pregunta 9: Artículos Defectuosos en una Fábrica
+
+En una fábrica, un lote de 40 artículos contiene 6 defectuosos. Se eligen 5 artículos. ¿Cuál es la probabilidad de obtener exactamente 1 defectuoso?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 40
+-   Número de éxitos en la población ($K$): 6
+-   Tamaño de la muestra ($n$): 5
+-   Número deseado de éxitos en la muestra ($k$): 1
+
+Para calcular la probabilidad exacta \( P(X = 1) \), usamos la función `dhyper()` en R:
+
+```{r}
+# Cálculo de la probabilidad
+N <- 40
+K <- 6
+n <- 5
+k <- 1
+prob_exacta <- dhyper(k, K, N - K, n)
+cat("La probabilidad de obtener exactamente 1 artículo defectuoso es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 10: Prueba de Calidad de Productos
+
+En una prueba de calidad, de 80 productos, 10 son defectuosos. Si se seleccionan 8 productos, ¿cuántos defectuosos como máximo se esperan para que la probabilidad acumulada no supere el 90%?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+-   Tamaño de la población ($N$): 80
+-   Número de éxitos en la población ($K$): 10
+-   Tamaño de la muestra ($n$): 8
+-   Probabilidad acumulada deseada ($q$): 0.90
+
+Para encontrar el cuantil \( k \) tal que \( P(X \le k) \ge 0.90 \), usamos la función `qhyper()` en R:
+
+```{r}
+N <- 80
+K <- 10
+n <- 8
+q <- 0.90
+max_defectuosos <- qhyper(q, K, N - K, n)
+cat("La cantidad máxima de productos defectuosos sin superar el 90% de probabilidad acumulada es:", max_defectuosos, "\n")
+```
+
+</div>
