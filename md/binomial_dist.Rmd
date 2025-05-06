@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Una prueba tiene 20 preguntas de Verdadero/Falso. Si un estudiante responde al azar, ¿cuál es la probabilidad de obtener exactamente 10 respuestas correctas?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -38,7 +38,7 @@ cat("Resultado: ", dbinom(10, 20, 0.5), "\n")
 
 La probabilidad de que una bombilla esté defectuosa es 0.1. Si se inspeccionan 15 bombillas, ¿cuál es la probabilidad de que exactamente 2 estén defectuosas?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -61,7 +61,7 @@ cat("Resultado: ", dbinom(2, 15, 0.1), "\n")
 
 En una fábrica, el 80% de las piezas están en buenas condiciones. Si se seleccionan 10 piezas al azar, ¿cuál es la probabilidad de que al menos 9 estén en buenas condiciones?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -84,7 +84,7 @@ cat("Resultado: ", 1 - pbinom(8, 10, 0.8), "\n")
 
 Una medicación tiene una tasa de efectividad del 70%. Si se aplica a 12 pacientes, ¿cuál es la probabilidad de que como máximo 8 muestren mejoría?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -107,7 +107,7 @@ cat("Resultado: ", pbinom(8, 12, 0.7), "\n")
 
 En una comunidad, el 60% de los hogares reciclan. Si se seleccionan 10 hogares al azar, ¿cuál es la probabilidad de que exactamente 6 reciclen?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -130,7 +130,7 @@ cat("Resultado: ", dbinom(6, 10, 0.6), "\n")
 
 La probabilidad de que un cliente compre un producto al visitar una tienda es 0.3. ¿Cuál es la probabilidad de que, en 5 visitas, compre exactamente 2 veces?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -153,7 +153,7 @@ cat("Resultado: ", dbinom(2, 5, 0.3), "\n")
 
 En una encuesta, se pregunta a las personas si usan bicicleta. Se sabe que el 45% sí lo hace. Si se encuesta a 8 personas, ¿cuál es la probabilidad de que al menos 5 la usen?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -176,7 +176,7 @@ cat("Resultado: ", 1 - pbinom(4, 8, 0.45), "\n")
 
 En una línea de ensamblaje, el 5% de los productos salen con un defecto. ¿Cuál es la probabilidad de que, al revisar 20 productos, ninguno esté defectuoso?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -199,7 +199,7 @@ cat("Resultado: ", dbinom(0, 20, 0.05), "\n")
 
 Una moneda "cargada" tiene una probabilidad de 0.6 de salir cara. ¿Cuál es la probabilidad de obtener al menos 3 caras en 5 lanzamientos?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -223,7 +223,7 @@ cat("Resultado: ", 1 - pbinom(2, 5, 0.6), "\n")
 
 Un estudiante responde 10 preguntas de opción múltiple al azar. ¿Cuál es la probabilidad de que obtenga como máximo 4 preguntas correctas?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -248,7 +248,7 @@ cat("Resultado: ", pbinom(4, 10, 0.25), "\n")
 
 Este problema pregunta por el número de éxitos ($k$) correspondiente a un umbral de probabilidad acumulada dado. Este es un problema de cuantil en el contexto de la distribución binomial.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -273,7 +273,7 @@ Una máquina produce un 85% de piezas buenas. ¿Cuál es el número mínimo espe
 
 Esta pregunta pide un cuantil para el número de piezas *defectuosas*.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -297,7 +297,7 @@ cat("Resultado: ", qbinom(0.80, 10, 0.15), "\n")
 
 Se estima que un estudiante tiene una probabilidad de 0.9 de asistir a clase. Si hay 15 clases, ¿cuál es la probabilidad de que falte exactamente a 2?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -325,7 +325,7 @@ cat("Resultado: ", dbinom(2, 15, 0.1), "\n")
 
 Una persona lanza una moneda 12 veces. ¿Cuál es la probabilidad de obtener cara exactamente 6 veces si la moneda es justa?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -348,7 +348,7 @@ cat("Resultado: ", dbinom(6, 12, 0.5), "\n")
 
 En una prueba piloto, el 25% de los usuarios completa un formulario. ¿Cuál es la probabilidad de que, de 8 usuarios, al menos 5 lo completen?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 

@@ -13,7 +13,7 @@
 
 <meta name="date" content="2025-05-05" />
 
-<title>Evaluación 2 - Parte 3: Distribución Hipergeométrica</title>
+<title>Evaluación 2 - Parte 4: Distribución Poisson</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,286 +350,224 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Evaluación 2 - Parte 3: Distribución
-Hipergeométrica</h1>
+<h1 class="title toc-ignore">Evaluación 2 - Parte 4: Distribución
+Poisson</h1>
 <h4 class="author">Daniela Fishwick</h4>
 <h4 class="date">05/05/2025</h4>
 
 </div>
 
 
-<div id="ejercicios-de-distribución-hipergeométrica" class="section level2">
-<h2>Ejercicios de Distribución Hipergeométrica</h2>
-<div id="pregunta-1-extracción-de-pelotas" class="section level3">
-<h3>Pregunta 1: Extracción de Pelotas</h3>
-<p>En una bolsa hay 12 pelotas, de las cuales 5 son rojas. Se extraen 4
-pelotas sin reemplazo. ¿Cuál es la probabilidad de extraer exactamente 2
-pelotas rojas?</p>
-<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd; background-color: #fdfdfd;">
-<p><strong>Datos:</strong></p>
-<ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-12</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 5</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-4</li>
-<li>Número de éxitos deseados en la muestra (<span class="math inline">\(k\)</span>): 2</li>
-</ul>
-<p>Para calcular la probabilidad exacta <span class="math inline">\(P(X
-= k)\)</span>, usamos la función <code>dhyper()</code> en R:</p>
-<pre class="r"><code># Cálculo de la probabilidad
-N &lt;- 12
-K &lt;- 5
-n &lt;- 4
-k &lt;- 2
-prob_exacta &lt;- dhyper(k, K, N - K, n)
-cat(&quot;La probabilidad de extraer exactamente 2 pelotas rojas es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de extraer exactamente 2 pelotas rojas es: 0.4242424</code></pre>
-</div>
-</div>
-<div id="pregunta-2-componentes-defectuosos" class="section level3">
-<h3>Pregunta 2: Componentes Defectuosos</h3>
-<p>Una caja contiene 8 componentes defectuosos y 32 en buen estado. Se
-seleccionan 5 al azar sin reemplazo. ¿Cuál es la probabilidad de que a
-lo más 1 sea defectuoso?</p>
-<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
-<p><strong>Datos:</strong></p>
-<p>Este es un problema de distribución hipergeométrica.</p>
-<ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-40</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 8</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-5</li>
-<li>Número de éxitos deseados en la muestra (<span class="math inline">\(k\)</span>): 0 o 1</li>
-</ul>
-<p>Para calcular la probabilidad acumulada <span class="math inline">\(P(X \le 1)\)</span>, usamos la función
-<code>phyper()</code> en R:</p>
-<pre class="r"><code>N &lt;- 40
-K &lt;- 8
-n &lt;- 5
-k &lt;- 1  # Calcula P(X &lt;= 1)
-prob_acumulada &lt;- phyper(k, K, N - K, n)
-cat(&quot;La probabilidad de encontrar como máximo 1 componente defectuoso es:&quot;, prob_acumulada, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de encontrar como máximo 1 componente defectuoso es: 0.7432372</code></pre>
-</div>
-</div>
-<div id="pregunta-3-rifa-de-boletos" class="section level3">
-<h3>Pregunta 3: Rifa de Boletos</h3>
-<p>En una rifa hay 15 boletos premiados entre 100 en total. Si una
-persona compra 10 boletos, ¿cuál es la probabilidad de ganar exactamente
-3 premios?</p>
+<div id="pregunta-1-accidentes-de-tráfico" class="section level3">
+<h3>Pregunta 1: Accidentes de Tráfico</h3>
+<p>En promedio, ocurren 2 accidentes de tráfico al día en una
+intersección. ¿Cuál es la probabilidad de que ocurran exactamente 3
+accidentes en un día?</p>
 <div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 <p><strong>Datos:</strong></p>
 <ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-100</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 15</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-10</li>
-<li>Número de éxitos deseados en la muestra (<span class="math inline">\(k\)</span>): 3</li>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>): 2
+accidentes por día</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): 3 accidentes</li>
 </ul>
-<p>Para calcular la probabilidad exacta <span class="math inline">\(P(X
-= 3)\)</span>, usamos la función <code>dhyper()</code> en R:</p>
-<pre class="r"><code># Cálculo de la probabilidad
-N &lt;- 100
-K &lt;- 15
-n &lt;- 10
+<p>Para calcular la probabilidad de que ocurran exactamente 3
+accidentes, usamos la función <code>dpois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 2
 k &lt;- 3
-prob_exacta &lt;- dhyper(k, K, N - K, n)
-cat(&quot;La probabilidad de ganar exactamente 3 premios es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de ganar exactamente 3 premios es: 0.1297383</code></pre>
+prob_exacta &lt;- dpois(k, lambda)
+cat(&quot;La probabilidad de que ocurran exactamente 3 accidentes es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de que ocurran exactamente 3 accidentes es: 0.180447</code></pre>
 </div>
 </div>
-<div id="pregunta-4-bombillas-defectuosas" class="section level3">
-<h3>Pregunta 4: Bombillas Defectuosas</h3>
-<p>Una muestra de 7 bombillas se selecciona de un lote de 50 bombillas,
-donde 8 están defectuosas. ¿Cuál es la probabilidad de encontrar como
-máximo 2 bombillas defectuosas?</p>
+<div id="pregunta-2-defectos-de-una-máquina" class="section level3">
+<h3>Pregunta 2: Defectos de una Máquina</h3>
+<p>Una máquina produce defectos en promedio a razón de 1.5 por hora.
+¿Cuál es la probabilidad de tener a lo más 2 defectos en una hora?</p>
 <div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 <p><strong>Datos:</strong></p>
 <ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-50</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 8</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-7</li>
-<li>Número de éxitos deseados en la muestra (<span class="math inline">\(k\)</span>): 0, 1 o 2</li>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>):
+1.5 defectos por hora</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): A lo más 2 defectos (0, 1 o 2)</li>
+</ul>
+<p>Para calcular la probabilidad de tener a lo más 2 defectos, usamos la
+función <code>ppois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 1.5
+k &lt;- 2
+prob_acumulada &lt;- ppois(k, lambda)
+cat(&quot;La probabilidad de tener a lo más 2 defectos en una hora es:&quot;, prob_acumulada, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de tener a lo más 2 defectos en una hora es: 0.8088468</code></pre>
+</div>
+</div>
+<div id="pregunta-3-llamadas-a-un-centro-de-llamadas" class="section level3">
+<h3>Pregunta 3: Llamadas a un Centro de Llamadas</h3>
+<p>Un centro de llamadas recibe en promedio 10 llamadas por hora. ¿Cuál
+es la probabilidad de recibir más de 12 llamadas en una hora?</p>
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>):
+10 llamadas por hora</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): Más de 12 llamadas (&gt; 12)</li>
+</ul>
+<p>Para calcular la probabilidad de recibir más de 12 llamadas, usamos
+la función <code>ppois()</code> en R y la regla del complemento:</p>
+<pre class="r"><code>lambda &lt;- 10
+k &lt;- 12
+prob_mas_de_12 &lt;- 1 - ppois(k, lambda)
+cat(&quot;La probabilidad de recibir más de 12 llamadas en una hora es:&quot;, prob_mas_de_12, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de recibir más de 12 llamadas en una hora es: 0.2084435</code></pre>
+</div>
+</div>
+<div id="pregunta-4-fallas-de-una-impresora" class="section level3">
+<h3>Pregunta 4: Fallas de una Impresora</h3>
+<p>Una impresora presenta fallas a un promedio de 0.5 fallas por día.
+¿Cuál es la probabilidad de que un día no presente fallas?</p>
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>):
+0.5 fallas por día</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): 0 fallas</li>
+</ul>
+<p>Para calcular la probabilidad de que no presente fallas, usamos la
+función <code>dpois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 0.5
+k &lt;- 0
+prob_cero_fallas &lt;- dpois(k, lambda)
+cat(&quot;La probabilidad de que no presente fallas es:&quot;, prob_cero_fallas, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de que no presente fallas es: 0.6065307</code></pre>
+</div>
+</div>
+<div id="pregunta-5-fallas-en-una-central-eléctrica" class="section level3">
+<h3>Pregunta 5: Fallas en una Central Eléctrica</h3>
+<p>En una central eléctrica se producen en promedio 4 fallas menores por
+mes. ¿Cuál es el número máximo de fallas que no supera una probabilidad
+acumulada del 80%?</p>
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+<p><strong>Datos:</strong></p>
+<p>Este es un problema de distribución de Poisson, donde la variable
+aleatoria es el número de fallas menores en la central eléctrica por
+mes. Nos piden hallar un cuantil.</p>
+<ul>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>): 4
+fallas por mes</li>
+<li>Probabilidad acumulada deseada (<span class="math inline">\(p\)</span>): 0.80</li>
+</ul>
+<p>Para calcular el número máximo de fallas, usamos la función
+<code>qpois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 4
+p &lt;- 0.80
+max_fallas &lt;- qpois(p, lambda)
+cat(&quot;El número máximo de fallas que no supera la probabilidad acumulada del 80% es:&quot;, max_fallas, &quot;\n&quot;)</code></pre>
+<pre><code>## El número máximo de fallas que no supera la probabilidad acumulada del 80% es: 6</code></pre>
+</div>
+</div>
+<div id="pregunta-6-pedidos-en-una-página-web" class="section level3">
+<h3>Pregunta 6: Pedidos en una Página Web</h3>
+<p>En una página web se registran 6 pedidos en promedio por hora. ¿Cuál
+es la probabilidad de recibir exactamente 8 pedidos en una hora?</p>
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>): 6
+pedidos por hora</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): 8 pedidos</li>
+</ul>
+<p>Para calcular la probabilidad exacta <span class="math inline">\(P(X
+= 8)\)</span>, usamos la función <code>dpois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 6
+k &lt;- 8
+prob_exacta &lt;- dpois(k, lambda)
+cat(&quot;La probabilidad de recibir exactamente 8 pedidos en una hora es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de recibir exactamente 8 pedidos en una hora es: 0.1032577</code></pre>
+</div>
+</div>
+<div id="pregunta-7-urgencias-médicas-en-un-concierto" class="section level3">
+<h3>Pregunta 7: Urgencias Médicas en un Concierto</h3>
+<p>Durante un concierto se espera un promedio de 3 urgencias médicas por
+hora. ¿Cuál es la probabilidad de que en una hora ocurran como máximo 2
+urgencias?</p>
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>): 3
+urgencias por hora</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): A lo más 2 urgencias (0, 1 o 2)</li>
 </ul>
 <p>Para calcular la probabilidad acumulada <span class="math inline">\(P(X \le 2)\)</span>, usamos la función
-<code>phyper()</code> en R:</p>
-<pre class="r"><code># Cálculo de la probabilidad acumulada
-N &lt;- 50
-K &lt;- 8
-n &lt;- 7
+<code>ppois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 3
 k &lt;- 2
-prob_acumulada &lt;- phyper(k, K, N - K, n)
-cat(&quot;La probabilidad de encontrar como máximo 2 bombillas defectuosas es:&quot;, prob_acumulada, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de encontrar como máximo 2 bombillas defectuosas es: 0.9287068</code></pre>
+prob_acumulada &lt;- ppois(k, lambda)
+cat(&quot;La probabilidad de que ocurran como máximo 2 urgencias es:&quot;, prob_acumulada, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de que ocurran como máximo 2 urgencias es: 0.4231901</code></pre>
 </div>
 </div>
-<div id="pregunta-5-estudiantes-aprobados" class="section level3">
-<h3>Pregunta 5: Estudiantes Aprobados</h3>
-<p>De un total de 30 estudiantes, 12 aprobaron un examen. Se eligen 6
-estudiantes al azar. ¿Qué cantidad máxima de aprobados se espera sin
-superar el 95% de probabilidad acumulada?</p>
+<div id="pregunta-8-nacimientos-en-un-hospital" class="section level3">
+<h3>Pregunta 8: Nacimientos en un Hospital</h3>
+<p>En un hospital pequeño, se reporta un promedio de 5 nacimientos por
+día. ¿Cuál es la probabilidad de que en un día haya más de 7
+nacimientos?</p>
 <div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 <p><strong>Datos:</strong></p>
 <ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-30</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 12</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-6</li>
-<li>Probabilidad acumulada deseada (<span class="math inline">\(q\)</span>): 0.95</li>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>): 5
+nacimientos por día</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): Más de 7 nacimientos (&gt; 7)</li>
 </ul>
-<p>Para encontrar el cuantil <span class="math inline">\(k\)</span> tal
-que <span class="math inline">\(P(X \le k) \ge 0.95\)</span>, usamos la
-función <code>qhyper()</code> en R:</p>
-<pre class="r"><code>N &lt;- 30
-K &lt;- 12
-n &lt;- 6
-q &lt;- 0.95
-cuantil &lt;- qhyper(q, K, N - K, n)
-cat(&quot;La cantidad máxima de estudiantes aprobados sin superar el 95% de probabilidad acumulada es:&quot;, cuantil, &quot;\n&quot;)</code></pre>
-<pre><code>## La cantidad máxima de estudiantes aprobados sin superar el 95% de probabilidad acumulada es: 4</code></pre>
+<p>Para calcular la probabilidad de que haya más de 7 nacimientos,
+usamos la función <code>ppois()</code> en R y la regla del
+complemento:</p>
+<pre class="r"><code>lambda &lt;- 5
+k &lt;- 7
+prob_mas_de_7 &lt;- 1 - ppois(k, lambda)
+cat(&quot;La probabilidad de que haya más de 7 nacimientos en un día es:&quot;, prob_mas_de_7, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de que haya más de 7 nacimientos en un día es: 0.1333717</code></pre>
 </div>
 </div>
-<div id="pregunta-6-libros-en-mal-estado" class="section level3">
-<h3>Pregunta 6: Libros en Mal Estado</h3>
-<p>En una biblioteca hay 100 libros, de los cuales 20 están en mal
-estado. Si se revisan 15 libros al azar, ¿cuál es la probabilidad de que
-exactamente 5 estén en mal estado?</p>
+<div id="pregunta-9-autos-en-una-carretera-rural" class="section level3">
+<h3>Pregunta 9: Autos en una Carretera Rural</h3>
+<p>En una carretera rural, el promedio de autos que pasan es de 2 por
+minuto. ¿Cuál es la probabilidad de que en un minuto pasen exactamente 5
+autos?</p>
 <div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 <p><strong>Datos:</strong></p>
 <ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-100</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 20</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-15</li>
-<li>Número deseado de éxitos en la muestra (<span class="math inline">\(k\)</span>): 5</li>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>): 2
+autos por minuto</li>
+<li>Número de ocurrencias deseadas (<span class="math inline">\(k\)</span>): 5 autos</li>
 </ul>
 <p>Para calcular la probabilidad exacta <span class="math inline">\(P(X
-= k)\)</span>, usamos la función <code>dhyper()</code> en R:</p>
-<pre class="r"><code># Cálculo de la probabilidad
-N &lt;- 100
-K &lt;- 20
-n &lt;- 15
+= 5)\)</span>, usamos la función <code>dpois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 2
 k &lt;- 5
-prob_exacta &lt;- dhyper(k, K, N - K, n)
-cat(&quot;La probabilidad de que exactamente 5 libros estén en mal estado es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de que exactamente 5 libros estén en mal estado es: 0.1007633</code></pre>
+prob_exacta &lt;- dpois(k, lambda)
+cat(&quot;La probabilidad de que pasen exactamente 5 autos en un minuto es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
+<pre><code>## La probabilidad de que pasen exactamente 5 autos en un minuto es: 0.03608941</code></pre>
 </div>
 </div>
-<div id="pregunta-7-piezas-defectuosas" class="section level3">
-<h3>Pregunta 7: Piezas Defectuosas</h3>
-<p>Un lote contiene 25 piezas, 5 de las cuales son defectuosas. Se
-extraen 8 piezas. ¿Cuál es la probabilidad de encontrar al menos 2
-defectuosas?</p>
+<div id="pregunta-10-visitas-a-una-biblioteca" class="section level3">
+<h3>Pregunta 10: Visitas a una Biblioteca</h3>
+<p>Una biblioteca registra en promedio 12 visitas por hora. ¿Cuál es el
+número mínimo de visitas que tiene al menos una probabilidad acumulada
+del 90%?</p>
 <div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 <p><strong>Datos:</strong></p>
+<p>Este es un problema de distribución de Poisson. Nos piden hallar un
+cuantil.</p>
 <ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-25</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 5</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-8</li>
-<li>Número deseado de éxitos en la muestra (<span class="math inline">\(k\)</span>): 2, 3, 4, o 5</li>
+<li>Tasa de ocurrencia (<span class="math inline">\(\lambda\)</span>):
+12 visitas por hora</li>
+<li>Probabilidad acumulada deseada (<span class="math inline">\(p\)</span>): 0.90</li>
 </ul>
-<p>Para calcular la probabilidad acumulada <span class="math inline">\(P(X \ge 2)\)</span>, usamos la función
-<code>phyper()</code> en R. Es más eficiente calcular la probabilidad
-del complemento, <span class="math inline">\(1 - P(X \le
-1)\)</span>:</p>
-<pre class="r"><code># para P(X &gt;= 2), donde k es 1
-N &lt;- 25
-K &lt;- 5
-n &lt;- 8
-k &lt;- 1
-prob_al_menos_2 &lt;- 1 - phyper(k, K, N - K, n)
-cat(&quot;La probabilidad de encontrar al menos 2 piezas defectuosas es:&quot;, prob_al_menos_2, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de encontrar al menos 2 piezas defectuosas es: 0.5251647</code></pre>
-</div>
-</div>
-<div id="pregunta-8-bolas-en-una-urna" class="section level3">
-<h3>Pregunta 8: Bolas en una Urna</h3>
-<p>Una urna contiene 10 bolas verdes y 30 bolas azules. Se extraen 6
-bolas. ¿Cuál es la probabilidad de que salgan al menos 3 bolas
-verdes?</p>
-<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
-<p><strong>Datos:</strong></p>
-<ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-40</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 10</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-6</li>
-<li>Número deseado de éxitos en la muestra (<span class="math inline">\(k\)</span>): 3, 4, 5, o 6</li>
-</ul>
-<p>Para calcular la probabilidad acumulada <span class="math inline">\(P(X \ge 3)\)</span>, usamos la función
-<code>phyper()</code> en R, nuevamente usando el complemento:</p>
-<pre class="r"><code>N &lt;- 40
-K &lt;- 10
-n &lt;- 6
-k &lt;- 2 # Calcula P(X &lt;= 2)
-prob_al_menos_3 &lt;- 1 - phyper(k, K, N - K, n)
-cat(&quot;La probabilidad de encontrar al menos 3 bolas verdes es:&quot;, prob_al_menos_3, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de encontrar al menos 3 bolas verdes es: 0.1527519</code></pre>
-</div>
-</div>
-<div id="pregunta-9-artículos-defectuosos-en-una-fábrica" class="section level3">
-<h3>Pregunta 9: Artículos Defectuosos en una Fábrica</h3>
-<p>En una fábrica, un lote de 40 artículos contiene 6 defectuosos. Se
-eligen 5 artículos. ¿Cuál es la probabilidad de obtener exactamente 1
-defectuoso?</p>
-<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
-<p><strong>Datos:</strong></p>
-<ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-40</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 6</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-5</li>
-<li>Número deseado de éxitos en la muestra (<span class="math inline">\(k\)</span>): 1</li>
-</ul>
-<p>Para calcular la probabilidad exacta <span class="math inline">\(P(X
-= 1)\)</span>, usamos la función <code>dhyper()</code> en R:</p>
-<pre class="r"><code># Cálculo de la probabilidad
-N &lt;- 40
-K &lt;- 6
-n &lt;- 5
-k &lt;- 1
-prob_exacta &lt;- dhyper(k, K, N - K, n)
-cat(&quot;La probabilidad de obtener exactamente 1 artículo defectuoso es:&quot;, prob_exacta, &quot;\n&quot;)</code></pre>
-<pre><code>## La probabilidad de obtener exactamente 1 artículo defectuoso es: 0.4228763</code></pre>
-</div>
-</div>
-<div id="pregunta-10-prueba-de-calidad-de-productos" class="section level3">
-<h3>Pregunta 10: Prueba de Calidad de Productos</h3>
-<p>En una prueba de calidad, de 80 productos, 10 son defectuosos. Si se
-seleccionan 8 productos, ¿cuántos defectuosos como máximo se esperan
-para que la probabilidad acumulada no supere el 90%?</p>
-<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
-<p><strong>Datos:</strong></p>
-<ul>
-<li>Tamaño de la población (<span class="math inline">\(N\)</span>):
-80</li>
-<li>Número de éxitos en la población (<span class="math inline">\(K\)</span>): 10</li>
-<li>Tamaño de la muestra (<span class="math inline">\(n\)</span>):
-8</li>
-<li>Probabilidad acumulada deseada (<span class="math inline">\(q\)</span>): 0.90</li>
-</ul>
-<p>Para encontrar el cuantil <span class="math inline">\(k\)</span> tal
-que <span class="math inline">\(P(X \le k) \ge 0.90\)</span>, usamos la
-función <code>qhyper()</code> en R:</p>
-<pre class="r"><code>N &lt;- 80
-K &lt;- 10
-n &lt;- 8
-q &lt;- 0.90
-max_defectuosos &lt;- qhyper(q, K, N - K, n)
-cat(&quot;La cantidad máxima de productos defectuosos sin superar el 90% de probabilidad acumulada es:&quot;, max_defectuosos, &quot;\n&quot;)</code></pre>
-<pre><code>## La cantidad máxima de productos defectuosos sin superar el 90% de probabilidad acumulada es: 2</code></pre>
-</div>
+<p>Para calcular el número mínimo de visitas, usamos la función
+<code>qpois()</code> en R:</p>
+<pre class="r"><code>lambda &lt;- 12
+p &lt;- 0.90
+min_visitas &lt;- qpois(p, lambda)
+cat(&quot;El número mínimo de visitas que tiene una probabilidad acumulada del 90% es:&quot;, min_visitas, &quot;\n&quot;)</code></pre>
+<pre><code>## El número mínimo de visitas que tiene una probabilidad acumulada del 90% es: 17</code></pre>
 </div>
 </div>
 

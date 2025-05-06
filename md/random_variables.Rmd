@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 1.  En una encuesta se pregunta a las personas por su color favorito. ¿Qué tipo de variable es esta?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:** Variable cualitativa nominal.
 
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 2.  Se registra el número de hijos de cada familia en un barrio. ¿Qué tipo de variable es?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:** Variable cuantitativa discreta.
 
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 3.  Se mide el tiempo (en segundos) que tarda una persona en recorrer 100 metros. ¿Qué tipo de variable es?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:** Variable cuantitativa continua.
 
@@ -37,7 +37,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 4.  Una empresa registra el nivel de satisfacción de sus clientes como: “malo”, “regular”, “bueno”, “excelente”. ¿Qué tipo de variable es?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:** Variable cualitativa ordinal.
 
@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### 5.  Se lanza un dado una vez. Define una variable aleatoria que represente el número obtenido.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ es el conjunto de todos los resultados posibles al lanzar un dado. $\Omega = \{1, 2, 3, 4, 5, 6\}$.
@@ -59,7 +59,7 @@ El recorrido de $X$ es $\{1, 2, 3, 4, 5, 6\}$.
 
 ### 6.  Se lanza una moneda tres veces. Define una variable aleatoria que represente la cantidad de caras obtenidas.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ es el conjunto de todos los resultados posibles al lanzar una moneda tres veces.  
@@ -84,7 +84,7 @@ El recorrido de $X$ es $\{0, 1, 2, 3\}$.
 
 ### 7.  En un experimento se mide la altura (en centímetros) de los estudiantes de una clase. Define la variable aleatoria que se genera.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Sea $H$ la variable aleatoria que representa la altura (en centímetros) de los estudiantes de una clase.  
@@ -94,7 +94,7 @@ El recorrido de $H$ es un intervalo de valores reales, por ejemplo, $\{h \in \ma
 
 ### 8.  Se seleccionan 2 bombillas de una caja con 3 defectuosas y 2 buenas. Define una variable aleatoria que cuente cuántas defectuosas se seleccionan.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ es el conjunto de todos los resultados posibles al seleccionar 2 bombillas.  
@@ -118,7 +118,7 @@ El recorrido de $D$ es $\{0, 1, 2\}$.
 
 ### 9.  En una tienda, se registran las marcas de teléfonos móviles comprados en un día. ¿Qué tipo de variable es?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Variable cualitativa nominal.
@@ -127,7 +127,7 @@ Variable cualitativa nominal.
 
 ### 10. Se mide la temperatura diaria (en °C) durante una semana. ¿Qué tipo de variable es?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Variable cuantitativa continua.
@@ -136,7 +136,7 @@ Variable cuantitativa continua.
 
 ### 11. Una persona anota la cantidad de mensajes de texto que recibe cada hora. ¿Qué tipo de variable es?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Variable cuantitativa discreta.
@@ -145,7 +145,7 @@ Variable cuantitativa discreta.
 
 ### 12. Se lanza un dado dos veces. Define una variable aleatoria que represente la suma de los dos resultados.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ es el conjunto de todos los pares de resultados posibles al lanzar un dado dos veces.  
@@ -159,7 +159,7 @@ El recorrido de $S$ es $\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\}$.
 
 ### 13. Una persona responde a un estímulo visual. Define una variable aleatoria que represente el tiempo (en segundos) que tarda en reaccionar.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Sea $T$ la variable aleatoria que representa el tiempo (en segundos) que tarda una persona en reaccionar a un estímulo visual.  
@@ -169,7 +169,7 @@ El recorrido de $T$ es un intervalo de valores reales, por ejemplo, $\{t \in \ma
 
 ### 14. En una caja hay 4 bolas rojas y 6 bolas azules. Se extraen 3 al azar sin reemplazo. Define una variable aleatoria que represente la cantidad de bolas rojas extraídas.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ es el conjunto de todas las combinaciones posibles al extraer 3 bolas.  
@@ -194,7 +194,7 @@ El recorrido de $R$ es $\{0, 1, 2, 3\}$.
 
 ### 15. En una sala de espera se mide cuánto tiempo (en minutos) permanece cada persona antes de ser atendida. Define la variable aleatoria que se genera.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Sea $W$ la variable aleatoria que representa el tiempo (en minutos) que permanece cada persona en la sala de espera.  
@@ -204,7 +204,7 @@ El recorrido de $W$ es un intervalo de valores reales, por ejemplo, $\{w \in \ma
 
 ### 16. Se observa cuántos vehículos pasan por una calle en intervalos de 10 minutos. Define la variable aleatoria correspondiente.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Sea $V$ la variable aleatoria que representa la cantidad de vehículos que pasan por una calle en intervalos de 10 minutos.  
@@ -214,7 +214,7 @@ El recorrido de $V$ es el conjunto de los enteros no negativos $\{0, 1, 2, 3, ..
 
 ### 17. Una máquina lanza piezas de forma automática. Define una variable aleatoria que indique si una pieza es “defectuosa” o “no defectuosa”.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Respuesta:**  
 Sea $X$ la variable aleatoria que indica si una pieza es defectuosa o no defectuosa.  
@@ -224,7 +224,7 @@ El recorrido de $X$ puede ser $\{0, 1\}$ donde 0 representa "no defectuosa" y 1 
 
 ### 18. Una urna contiene 5 bolas numeradas del 1 al 5. Se extraen dos bolas sin reemplazo. Define una variable aleatoria que represente la suma de los números obtenidos.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ es todo el conjunto de pares de bolas posibles extraidas.  
@@ -238,7 +238,7 @@ El recorrido de $S$ es $\{3, 4, 5, 6, 7, 8, 9\}$.
 
 ### 19. Se lanza un dado 4 veces. Define una variable aleatoria que represente la cantidad de veces que aparece el número 6.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ correspondiente a lanzar un dado 4 veces es el conjunto de todos los resultados posibles.  
@@ -264,7 +264,7 @@ El recorrido de $C$ es $\{0, 1, 2, 3, 4\}$.
 
 ### 20. Un estudiante responde 10 preguntas de verdadero/falso al azar. Define una variable aleatoria que represente la cantidad de respuestas correctas.
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Espacio Muestral:**  
 El espacio muestral $\Omega$ correspondiente a responder 10 preguntas de verdadero/falso es el conjunto de todas las combinaciones posibles de respuestas.  

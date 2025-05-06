@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 En una bolsa hay 12 pelotas, de las cuales 5 son rojas. Se extraen 4 pelotas sin reemplazo. ¿Cuál es la probabilidad de extraer exactamente 2 pelotas rojas?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -42,7 +42,7 @@ cat("La probabilidad de extraer exactamente 2 pelotas rojas es:", prob_exacta, "
 
 Una caja contiene 8 componentes defectuosos y 32 en buen estado. Se seleccionan 5 al azar sin reemplazo. ¿Cuál es la probabilidad de que a lo más 1 sea defectuoso?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -70,7 +70,7 @@ cat("La probabilidad de encontrar como máximo 1 componente defectuoso es:", pro
 
 En una rifa hay 15 boletos premiados entre 100 en total. Si una persona compra 10 boletos, ¿cuál es la probabilidad de ganar exactamente 3 premios?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -97,7 +97,7 @@ cat("La probabilidad de ganar exactamente 3 premios es:", prob_exacta, "\n")
 
 Una muestra de 7 bombillas se selecciona de un lote de 50 bombillas, donde 8 están defectuosas. ¿Cuál es la probabilidad de encontrar como máximo 2 bombillas defectuosas?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -124,7 +124,7 @@ cat("La probabilidad de encontrar como máximo 2 bombillas defectuosas es:", pro
 
 De un total de 30 estudiantes, 12 aprobaron un examen. Se eligen 6 estudiantes al azar. ¿Qué cantidad máxima de aprobados se espera sin superar el 95% de probabilidad acumulada?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -150,7 +150,7 @@ cat("La cantidad máxima de estudiantes aprobados sin superar el 95% de probabil
 
 En una biblioteca hay 100 libros, de los cuales 20 están en mal estado. Si se revisan 15 libros al azar, ¿cuál es la probabilidad de que exactamente 5 estén en mal estado?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -177,7 +177,7 @@ cat("La probabilidad de que exactamente 5 libros estén en mal estado es:", prob
 
 Un lote contiene 25 piezas, 5 de las cuales son defectuosas. Se extraen 8 piezas. ¿Cuál es la probabilidad de encontrar al menos 2 defectuosas?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -204,7 +204,7 @@ cat("La probabilidad de encontrar al menos 2 piezas defectuosas es:", prob_al_me
 
 Una urna contiene 10 bolas verdes y 30 bolas azules. Se extraen 6 bolas. ¿Cuál es la probabilidad de que salgan al menos 3 bolas verdes?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -230,7 +230,7 @@ cat("La probabilidad de encontrar al menos 3 bolas verdes es:", prob_al_menos_3,
 
 En una fábrica, un lote de 40 artículos contiene 6 defectuosos. Se eligen 5 artículos. ¿Cuál es la probabilidad de obtener exactamente 1 defectuoso?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 
@@ -257,7 +257,7 @@ cat("La probabilidad de obtener exactamente 1 artículo defectuoso es:", prob_ex
 
 En una prueba de calidad, de 80 productos, 10 son defectuosos. Si se seleccionan 8 productos, ¿cuántos defectuosos como máximo se esperan para que la probabilidad acumulada no supere el 90%?
 
-<div style="border: 1px solid black; padding: 10px;">
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
 
 **Datos:**
 

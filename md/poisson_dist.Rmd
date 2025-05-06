@@ -1,0 +1,234 @@
+---
+title: "Evaluación 2 - Parte 4: Distribución Poisson"
+author: "Daniela Fishwick"
+date: "05/05/2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Pregunta 1: Accidentes de Tráfico
+
+En promedio, ocurren 2 accidentes de tráfico al día en una intersección. ¿Cuál es la probabilidad de que ocurran exactamente 3 accidentes en un día?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 2 accidentes por día
+* Número de ocurrencias deseadas ($k$): 3 accidentes
+
+Para calcular la probabilidad de que ocurran exactamente 3 accidentes, usamos la función `dpois()` en R:
+
+```{r}
+lambda <- 2
+k <- 3
+prob_exacta <- dpois(k, lambda)
+cat("La probabilidad de que ocurran exactamente 3 accidentes es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 2: Defectos de una Máquina
+
+Una máquina produce defectos en promedio a razón de 1.5 por hora. ¿Cuál es la probabilidad de tener a lo más 2 defectos en una hora?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 1.5 defectos por hora
+* Número de ocurrencias deseadas ($k$): A lo más 2 defectos (0, 1 o 2)
+
+Para calcular la probabilidad de tener a lo más 2 defectos, usamos la función `ppois()` en R:
+
+```{r}
+lambda <- 1.5
+k <- 2
+prob_acumulada <- ppois(k, lambda)
+cat("La probabilidad de tener a lo más 2 defectos en una hora es:", prob_acumulada, "\n")
+```
+
+</div>
+
+### Pregunta 3: Llamadas a un Centro de Llamadas
+
+Un centro de llamadas recibe en promedio 10 llamadas por hora. ¿Cuál es la probabilidad de recibir más de 12 llamadas en una hora?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 10 llamadas por hora
+* Número de ocurrencias deseadas ($k$): Más de 12 llamadas (> 12)
+
+Para calcular la probabilidad de recibir más de 12 llamadas, usamos la función `ppois()` en R y la regla del complemento:
+
+```{r}
+lambda <- 10
+k <- 12
+prob_mas_de_12 <- 1 - ppois(k, lambda)
+cat("La probabilidad de recibir más de 12 llamadas en una hora es:", prob_mas_de_12, "\n")
+```
+
+</div>
+
+### Pregunta 4: Fallas de una Impresora
+
+Una impresora presenta fallas a un promedio de 0.5 fallas por día. ¿Cuál es la probabilidad de que un día no presente fallas?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 0.5 fallas por día
+* Número de ocurrencias deseadas ($k$): 0 fallas
+
+Para calcular la probabilidad de que no presente fallas, usamos la función `dpois()` en R:
+
+```{r}
+lambda <- 0.5
+k <- 0
+prob_cero_fallas <- dpois(k, lambda)
+cat("La probabilidad de que no presente fallas es:", prob_cero_fallas, "\n")
+```
+
+</div>
+
+### Pregunta 5: Fallas en una Central Eléctrica
+
+En una central eléctrica se producen en promedio 4 fallas menores por mes. ¿Cuál es el número máximo de fallas que no supera una probabilidad acumulada del 80%?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+Este es un problema de distribución de Poisson, donde la variable aleatoria es el número de fallas menores en la central eléctrica por mes. Nos piden hallar un cuantil.
+
+* Tasa de ocurrencia ($\lambda$): 4 fallas por mes
+* Probabilidad acumulada deseada ($p$): 0.80
+
+Para calcular el número máximo de fallas, usamos la función `qpois()` en R:
+
+```{r}
+lambda <- 4
+p <- 0.80
+max_fallas <- qpois(p, lambda)
+cat("El número máximo de fallas que no supera la probabilidad acumulada del 80% es:", max_fallas, "\n")
+```
+
+</div>
+
+### Pregunta 6: Pedidos en una Página Web
+
+En una página web se registran 6 pedidos en promedio por hora. ¿Cuál es la probabilidad de recibir exactamente 8 pedidos en una hora?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 6 pedidos por hora
+* Número de ocurrencias deseadas ($k$): 8 pedidos
+
+Para calcular la probabilidad exacta \( P(X = 8) \), usamos la función `dpois()` en R:
+
+```{r}
+lambda <- 6
+k <- 8
+prob_exacta <- dpois(k, lambda)
+cat("La probabilidad de recibir exactamente 8 pedidos en una hora es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 7: Urgencias Médicas en un Concierto
+
+Durante un concierto se espera un promedio de 3 urgencias médicas por hora. ¿Cuál es la probabilidad de que en una hora ocurran como máximo 2 urgencias?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 3 urgencias por hora
+* Número de ocurrencias deseadas ($k$): A lo más 2 urgencias (0, 1 o 2)
+
+Para calcular la probabilidad acumulada \( P(X \le 2) \), usamos la función `ppois()` en R:
+
+```{r}
+lambda <- 3
+k <- 2
+prob_acumulada <- ppois(k, lambda)
+cat("La probabilidad de que ocurran como máximo 2 urgencias es:", prob_acumulada, "\n")
+```
+
+</div>
+
+### Pregunta 8: Nacimientos en un Hospital
+
+En un hospital pequeño, se reporta un promedio de 5 nacimientos por día. ¿Cuál es la probabilidad de que en un día haya más de 7 nacimientos?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 5 nacimientos por día
+* Número de ocurrencias deseadas ($k$): Más de 7 nacimientos (> 7)
+
+Para calcular la probabilidad de que haya más de 7 nacimientos, usamos la función `ppois()` en R y la regla del complemento:
+
+```{r}
+lambda <- 5
+k <- 7
+prob_mas_de_7 <- 1 - ppois(k, lambda)
+cat("La probabilidad de que haya más de 7 nacimientos en un día es:", prob_mas_de_7, "\n")
+```
+
+</div>
+
+### Pregunta 9: Autos en una Carretera Rural
+
+En una carretera rural, el promedio de autos que pasan es de 2 por minuto. ¿Cuál es la probabilidad de que en un minuto pasen exactamente 5 autos?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+* Tasa de ocurrencia ($\lambda$): 2 autos por minuto
+* Número de ocurrencias deseadas ($k$): 5 autos
+
+Para calcular la probabilidad exacta \( P(X = 5) \), usamos la función `dpois()` en R:
+
+```{r}
+lambda <- 2
+k <- 5
+prob_exacta <- dpois(k, lambda)
+cat("La probabilidad de que pasen exactamente 5 autos en un minuto es:", prob_exacta, "\n")
+```
+
+</div>
+
+### Pregunta 10: Visitas a una Biblioteca
+
+Una biblioteca registra en promedio 12 visitas por hora. ¿Cuál es el número mínimo de visitas que tiene al menos una probabilidad acumulada del 90%?
+
+<div style="border: 1px solid black; padding: 10px; background-color: #fdfdfd;">
+
+**Datos:**
+
+Este es un problema de distribución de Poisson. Nos piden hallar un cuantil.
+
+* Tasa de ocurrencia ($\lambda$): 12 visitas por hora
+* Probabilidad acumulada deseada ($p$): 0.90
+
+Para calcular el número mínimo de visitas, usamos la función `qpois()` en R:
+
+```{r}	
+lambda <- 12
+p <- 0.90
+min_visitas <- qpois(p, lambda)
+cat("El número mínimo de visitas que tiene una probabilidad acumulada del 90% es:", min_visitas, "\n")
+```
+
+</div>
