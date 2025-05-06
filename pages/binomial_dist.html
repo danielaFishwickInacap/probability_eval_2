@@ -13,7 +13,7 @@
 
 <meta name="date" content="2025-05-05" />
 
-<title>Evaluación 2 - Parte 1: Random Variables</title>
+<title>Evaluación 2 - Parte 2: Distribución Binomial</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,338 +350,253 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Evaluación 2 - Parte 1: Random
-Variables</h1>
+<h1 class="title toc-ignore">Evaluación 2 - Parte 2: Distribución
+Binomial</h1>
 <h4 class="author">Daniela Fishwick</h4>
 <h4 class="date">05/05/2025</h4>
 
 </div>
 
 
-<div id="ejercicios" class="section level2">
-<h2>Ejercicios</h2>
-<div id="en-una-encuesta-se-pregunta-a-las-personas-por-su-color-favorito.-qué-tipo-de-variable-es-esta" class="section level3">
-<h3>1. En una encuesta se pregunta a las personas por su color favorito.
-¿Qué tipo de variable es esta?</h3>
+<div id="ejercicios-de-distribución-binomial" class="section level2">
+<h2>Ejercicios de Distribución Binomial</h2>
+<div id="pregunta-1-prueba-de-verdaderofalso" class="section level3">
+<h3>Pregunta 1: Prueba de Verdadero/Falso</h3>
+<p>Una prueba tiene 20 preguntas de Verdadero/Falso. Si un estudiante
+responde al azar, ¿cuál es la probabilidad de obtener exactamente 10
+respuestas correctas?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong> Variable cualitativa nominal.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (n): 20 preguntas.</li>
+<li>Probabilidad de éxito (p): Para una pregunta de Verdadero/Falso
+respondida al azar, la probabilidad de acertar es 0.5 (o 50%).</li>
+<li>Número de éxitos deseados (k): Exactamente 10 respuestas
+correctas.</li>
+</ul>
+<p>Necesitamos encontrar la probabilidad de exactamente <span class="math inline">\(k\)</span> éxitos, lo que corresponde a una
+<strong>probabilidad exacta</strong>. La función <code>dbinom</code> en
+R se utiliza para este propósito.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 10, n = 20, p = 0.5
+cat(&quot;Resultado: &quot;, dbinom(10, 20, 0.5), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.1761971</code></pre>
 </div>
 </div>
-<div id="se-registra-el-número-de-hijos-de-cada-familia-en-un-barrio.-qué-tipo-de-variable-es" class="section level3">
-<h3>2. Se registra el número de hijos de cada familia en un barrio. ¿Qué
-tipo de variable es?</h3>
+<div id="pregunta-2-bombillas-defectuosas" class="section level3">
+<h3>Pregunta 2: Bombillas Defectuosas</h3>
+<p>La probabilidad de que una bombilla esté defectuosa es 0.1. Si se
+inspeccionan 15 bombillas, ¿cuál es la probabilidad de que exactamente 2
+estén defectuosas?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong> Variable cuantitativa discreta.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (n): 15 bombillas inspeccionadas.</li>
+<li>Probabilidad de éxito (p): La probabilidad de que una bombilla esté
+defectuosa es 0.1.</li>
+<li>Número de éxitos deseados (k): Exactamente 2 bombillas
+defectuosas.</li>
+</ul>
+<p>Estamos buscando la probabilidad de exactamente <span class="math inline">\(k\)</span> éxitos, que es una <strong>probabilidad
+exacta</strong>. Usamos la función <code>dbinom</code> en R.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 2, n = 15, p = 0.1
+cat(&quot;Resultado: &quot;, dbinom(2, 15, 0.1), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.2668959</code></pre>
 </div>
 </div>
-<div id="se-mide-el-tiempo-en-segundos-que-tarda-una-persona-en-recorrer-100-metros.-qué-tipo-de-variable-es" class="section level3">
-<h3>3. Se mide el tiempo (en segundos) que tarda una persona en recorrer
-100 metros. ¿Qué tipo de variable es?</h3>
+<div id="pregunta-3-piezas-de-fábrica" class="section level3">
+<h3>Pregunta 3: Piezas de Fábrica</h3>
+<p>En una fábrica, el 80% de las piezas están en buenas condiciones. Si
+se seleccionan 10 piezas al azar, ¿cuál es la probabilidad de que al
+menos 9 estén en buenas condiciones?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong> Variable cuantitativa continua.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (n): 10 piezas seleccionadas.</li>
+<li>Probabilidad de éxito (p): La probabilidad de que una pieza esté en
+buenas condiciones es 0.8 (u 80%).</li>
+<li>Número de éxitos deseados (k): Al menos 9 piezas en buenas
+condiciones. Esto significa <span class="math inline">\(X \ge
+9\)</span>, lo que incluye <span class="math inline">\(X=9\)</span> o
+<span class="math inline">\(X=10\)</span>.</li>
+</ul>
+<p>La probabilidad de “al menos” indica un cálculo acumulativo. La
+función <code>pbinom</code> calcula la probabilidad de <span class="math inline">\(X \le k\)</span>. Para encontrar <span class="math inline">\(P(X \ge 9)\)</span>, podemos usar la regla del
+complemento: <span class="math inline">\(P(X \ge 9) = 1 - P(X \le
+8)\)</span>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: n = 10, p = 0.8. Queremos P(X &gt;= 9) = 1 - P(X &lt;= 8)
+cat(&quot;Resultado: &quot;, 1 - pbinom(8, 10, 0.8), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.3758096</code></pre>
 </div>
 </div>
-<div id="una-empresa-registra-el-nivel-de-satisfacción-de-sus-clientes-como-malo-regular-bueno-excelente.-qué-tipo-de-variable-es" class="section level3">
-<h3>4. Una empresa registra el nivel de satisfacción de sus clientes
-como: “malo”, “regular”, “bueno”, “excelente”. ¿Qué tipo de variable
-es?</h3>
+<div id="pregunta-4-efectividad-de-la-medicación" class="section level3">
+<h3>Pregunta 4: Efectividad de la Medicación</h3>
+<p>Una medicación tiene una tasa de efectividad del 70%. Si se aplica a
+12 pacientes, ¿cuál es la probabilidad de que como máximo 8 muestren
+mejoría?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong> Variable cualitativa ordinal.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (n): 12 pacientes.</li>
+<li>Probabilidad de éxito (p): La probabilidad de que un paciente
+muestre mejoría es 0.7 (o 70%).</li>
+<li>Número de éxitos deseados (k): Como máximo 8 pacientes que muestran
+mejoría. Esto significa <span class="math inline">\(X \le
+8\)</span>.</li>
+</ul>
+<p>“Como máximo” indica una probabilidad acumulativa. La función
+<code>pbinom</code> en R calcula la probabilidad de <span class="math inline">\(X \le k\)</span>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 8, n = 12, p = 0.7
+cat(&quot;Resultado: &quot;, pbinom(8, 12, 0.7), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.5074842</code></pre>
 </div>
 </div>
-<div id="se-lanza-un-dado-una-vez.-define-una-variable-aleatoria-que-represente-el-número-obtenido." class="section level3">
-<h3>5. Se lanza un dado una vez. Define una variable aleatoria que
-represente el número obtenido.</h3>
+<div id="pregunta-5-hogares-que-reciclan" class="section level3">
+<h3>Pregunta 5: Hogares que Reciclan</h3>
+<p>En una comunidad, el 60% de los hogares reciclan. Si se seleccionan
+10 hogares al azar, ¿cuál es la probabilidad de que exactamente 6
+reciclen?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span> es el
-conjunto de todos los resultados posibles al lanzar un dado. <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(X\)</span> la variable aleatoria que
-representa el número obtenido al lanzar un dado una vez.</p>
-<p>El recorrido de <span class="math inline">\(X\)</span> es <span class="math inline">\(\{1, 2, 3, 4, 5, 6\}\)</span>.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (n): 10 hogares seleccionados.</li>
+<li>Probabilidad de éxito (p): La probabilidad de que un hogar recicle
+es 0.6 (o 60%).</li>
+<li>Número de éxitos deseados (k): Exactamente 6 hogares reciclan.</li>
+</ul>
+<p>Necesitamos encontrar la probabilidad de exactamente <span class="math inline">\(k\)</span> éxitos, que es una <strong>probabilidad
+exacta</strong>. Usamos la función <code>dbinom</code> en R.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 6, n = 10, p = 0.6
+cat(&quot;Resultado: &quot;, dbinom(6, 10, 0.6), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.2508227</code></pre>
 </div>
 </div>
-<div id="se-lanza-una-moneda-tres-veces.-define-una-variable-aleatoria-que-represente-la-cantidad-de-caras-obtenidas." class="section level3">
-<h3>6. Se lanza una moneda tres veces. Define una variable aleatoria que
-represente la cantidad de caras obtenidas.</h3>
+<div id="pregunta-6-compra-de-cliente" class="section level3">
+<h3>Pregunta 6: Compra de Cliente</h3>
+<p>La probabilidad de que un cliente compre un producto al visitar una
+tienda es 0.3. ¿Cuál es la probabilidad de que, en 5 visitas, compre
+exactamente 2 veces?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span> es el
-conjunto de todos los resultados posibles al lanzar una moneda tres
-veces.<br />
-<span class="math inline">\(\Omega = \{\text{CCC}, \text{CCS},
-\text{CSC}, \text{CSS}, \text{SCC}, \text{SCS}, \text{SSC},
-\text{SSS}\}\)</span>.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(X\)</span> la variable aleatoria que
-representa la cantidad de caras obtenidas al lanzar una moneda tres
-veces.</p>
-<p><span class="math display">\[
-X(x) =
-\begin{cases}
-0 &amp; \text{si } x = SSS \\
-1 &amp; \text{si } x \in \{SSC, SCS, CSS\} \\
-2 &amp; \text{si } x \in \{SCC, CSC, CCS\} \\
-3 &amp; \text{si } x = CCC
-\end{cases}
-\]</span></p>
-<p>El recorrido de <span class="math inline">\(X\)</span> es <span class="math inline">\(\{0, 1, 2, 3\}\)</span>.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 5
+visitas.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de comprar = 0.3.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+Exactamente 2 compras.</li>
+</ul>
+<p>Necesitamos encontrar la <strong>probabilidad exacta</strong> de
+exactamente <span class="math inline">\(k\)</span> éxitos, lo que se
+calcula con la función <code>dbinom</code>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 2, n = 5, p = 0.3
+cat(&quot;Resultado: &quot;, dbinom(2, 5, 0.3), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.3087</code></pre>
 </div>
 </div>
-<div id="en-un-experimento-se-mide-la-altura-en-centímetros-de-los-estudiantes-de-una-clase.-define-la-variable-aleatoria-que-se-genera." class="section level3">
-<h3>7. En un experimento se mide la altura (en centímetros) de los
-estudiantes de una clase. Define la variable aleatoria que se
-genera.</h3>
+<div id="pregunta-7-uso-de-bicicleta" class="section level3">
+<h3>Pregunta 7: Uso de Bicicleta</h3>
+<p>En una encuesta, se pregunta a las personas si usan bicicleta. Se
+sabe que el 45% sí lo hace. Si se encuesta a 8 personas, ¿cuál es la
+probabilidad de que al menos 5 la usen?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(H\)</span> la variable aleatoria que
-representa la altura (en centímetros) de los estudiantes de una
-clase.<br />
-El recorrido de <span class="math inline">\(H\)</span> es un intervalo
-de valores reales, por ejemplo, <span class="math inline">\(\{h \in
-\mathbb{R} : 150 \le h \le 190 \}\)</span>.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 8
+personas encuestadas.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de usar bicicleta = 0.45.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+<strong>Al menos</strong> 5 la usan (<span class="math inline">\(X \ge
+5\)</span>). Esto incluye los casos en los que 5, 6, 7 u 8 personas usan
+bicicleta.</li>
+</ul>
+<p>La frase “al menos” indica una probabilidad acumulativa. La función
+<code>pbinom</code> calcula <span class="math inline">\(P(X \le
+k)\)</span>. Para encontrar <span class="math inline">\(P(X \ge
+5)\)</span>, usamos la regla del complemento: <span class="math inline">\(P(X \ge 5) = 1 - P(X \le 4)\)</span>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: n = 8, p = 0.45. Queremos P(X &gt;= 5) = 1 - P(X &lt;= 4)
+cat(&quot;Resultado: &quot;, 1 - pbinom(4, 8, 0.45), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.2603807</code></pre>
 </div>
 </div>
-<div id="se-seleccionan-2-bombillas-de-una-caja-con-3-defectuosas-y-2-buenas.-define-una-variable-aleatoria-que-cuente-cuántas-defectuosas-se-seleccionan." class="section level3">
-<h3>8. Se seleccionan 2 bombillas de una caja con 3 defectuosas y 2
-buenas. Define una variable aleatoria que cuente cuántas defectuosas se
-seleccionan.</h3>
+<div id="pregunta-8-defectos-de-fábrica" class="section level3">
+<h3>Pregunta 8: Defectos de Fábrica</h3>
+<p>En una línea de ensamblaje, el 5% de los productos salen con un
+defecto. ¿Cuál es la probabilidad de que, al revisar 20 productos,
+ninguno esté defectuoso?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span> es el
-conjunto de todos los resultados posibles al seleccionar 2
-bombillas.<br />
-<span class="math inline">\(\Omega = \{BB, BD, DB, DD\}\)</span>, donde
-B representa una buena bombilla y D representa una bombilla
-defectuosa.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(D\)</span> la variable aleatoria que
-representa la cantidad de bombillas defectuosas seleccionadas.</p>
-<p><span class="math display">\[
-X(x) =
-\begin{cases}
-0 &amp; \text{si } x = BB \\
-1 &amp; \text{si } x \in \{BD, DB\} \\
-2 &amp; \text{si } x = DD \\
-\end{cases}
-\]</span></p>
-<p>El recorrido de <span class="math inline">\(D\)</span> es <span class="math inline">\(\{0, 1, 2\}\)</span>.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 20
+productos revisados.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de que un producto sea defectuoso = 0.05.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+Exactamente 0 productos defectuosos.</li>
+</ul>
+<p>Necesitamos encontrar la <strong>probabilidad exacta</strong> de
+exactamente <span class="math inline">\(k\)</span> éxitos (<span class="math inline">\(X=0\)</span>), usando la función
+<code>dbinom</code>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 0, n = 20, p = 0.05
+cat(&quot;Resultado: &quot;, dbinom(0, 20, 0.05), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.3584859</code></pre>
 </div>
 </div>
-<div id="en-una-tienda-se-registran-las-marcas-de-teléfonos-móviles-comprados-en-un-día.-qué-tipo-de-variable-es" class="section level3">
-<h3>9. En una tienda, se registran las marcas de teléfonos móviles
-comprados en un día. ¿Qué tipo de variable es?</h3>
+<div id="pregunta-9-moneda-sesgada" class="section level3">
+<h3>Pregunta 9: Moneda Sesgada</h3>
+<p>Una moneda “cargada” tiene una probabilidad de 0.6 de salir cara.
+¿Cuál es la probabilidad de obtener al menos 3 caras en 5
+lanzamientos?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Variable cualitativa nominal.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 5
+lanzamientos.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de obtener cara = 0.6.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+<strong>Al menos</strong> 3 caras (<span class="math inline">\(X \ge
+3\)</span>). Esto incluye 3, 4 o 5 caras.</li>
+</ul>
+<p>El término “al menos” indica una probabilidad acumulativa. Usamos la
+regla del complemento con <code>pbinom</code>: <span class="math inline">\(P(X \ge 3) = 1 - P(X \le 2)\)</span>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: n = 5, p = 0.6. Queremos P(X &gt;= 3) = 1 - P(X &lt;= 2)
+cat(&quot;Resultado: &quot;, 1 - pbinom(2, 5, 0.6), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.68256</code></pre>
 </div>
 </div>
-<div id="se-mide-la-temperatura-diaria-en-c-durante-una-semana.-qué-tipo-de-variable-es" class="section level3">
-<h3>10. Se mide la temperatura diaria (en °C) durante una semana. ¿Qué
-tipo de variable es?</h3>
+<div id="pregunta-10-examen-de-estudiante" class="section level3">
+<h3>Pregunta 10: Examen de Estudiante</h3>
+<p>Un estudiante responde 10 preguntas de opción múltiple al azar. ¿Cuál
+es la probabilidad de que obtenga como máximo 4 preguntas correctas?</p>
 <div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Variable cuantitativa continua.</p>
-</div>
-</div>
-<div id="una-persona-anota-la-cantidad-de-mensajes-de-texto-que-recibe-cada-hora.-qué-tipo-de-variable-es" class="section level3">
-<h3>11. Una persona anota la cantidad de mensajes de texto que recibe
-cada hora. ¿Qué tipo de variable es?</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Variable cuantitativa discreta.</p>
-</div>
-</div>
-<div id="se-lanza-un-dado-dos-veces.-define-una-variable-aleatoria-que-represente-la-suma-de-los-dos-resultados." class="section level3">
-<h3>12. Se lanza un dado dos veces. Define una variable aleatoria que
-represente la suma de los dos resultados.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span> es el
-conjunto de todos los pares de resultados posibles al lanzar un dado dos
-veces.<br />
-<span class="math inline">\(\Omega = \{(1,1), (1,2), ..., (1,6), (2,1),
-..., (6,6)\}\)</span>.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(S\)</span> la variable aleatoria que
-representa la suma de los resultados de lanzar un dado dos veces.<br />
-El recorrido de <span class="math inline">\(S\)</span> es <span class="math inline">\(\{2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-12\}\)</span>.</p>
-</div>
-</div>
-<div id="una-persona-responde-a-un-estímulo-visual.-define-una-variable-aleatoria-que-represente-el-tiempo-en-segundos-que-tarda-en-reaccionar." class="section level3">
-<h3>13. Una persona responde a un estímulo visual. Define una variable
-aleatoria que represente el tiempo (en segundos) que tarda en
-reaccionar.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(T\)</span> la variable aleatoria que
-representa el tiempo (en segundos) que tarda una persona en reaccionar a
-un estímulo visual.<br />
-El recorrido de <span class="math inline">\(T\)</span> es un intervalo
-de valores reales, por ejemplo, <span class="math inline">\(\{t \in
-\mathbb{R} : t &gt; 0 \}\)</span>.</p>
-</div>
-</div>
-<div id="en-una-caja-hay-4-bolas-rojas-y-6-bolas-azules.-se-extraen-3-al-azar-sin-reemplazo.-define-una-variable-aleatoria-que-represente-la-cantidad-de-bolas-rojas-extraídas." class="section level3">
-<h3>14. En una caja hay 4 bolas rojas y 6 bolas azules. Se extraen 3 al
-azar sin reemplazo. Define una variable aleatoria que represente la
-cantidad de bolas rojas extraídas.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span> es el
-conjunto de todas las combinaciones posibles al extraer 3 bolas.<br />
-<span class="math inline">\(\Omega = \{(R1, R2, R3), (R1, R2, R4), ...,
-(A1, A2, A3)\}\)</span>, donde <span class="math inline">\(R\)</span>
-representa una bola roja y <span class="math inline">\(A\)</span>
-representa una bola azul.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(R\)</span> la variable aleatoria que
-representa la cantidad de bolas rojas extraídas.</p>
-<p><span class="math display">\[
-X(x) =
-\begin{cases}
-0 &amp; \text{si } x = RRR \\
-1 &amp; \text{si } x \in \{RRA, RAR, RAA\} \\
-2 &amp; \text{si } x \in \{ARR, ARA, AAR\} \\
-3 &amp; \text{si } x = AAA
-\end{cases}
-\]</span></p>
-<p>El recorrido de <span class="math inline">\(R\)</span> es <span class="math inline">\(\{0, 1, 2, 3\}\)</span>.</p>
-</div>
-</div>
-<div id="en-una-sala-de-espera-se-mide-cuánto-tiempo-en-minutos-permanece-cada-persona-antes-de-ser-atendida.-define-la-variable-aleatoria-que-se-genera." class="section level3">
-<h3>15. En una sala de espera se mide cuánto tiempo (en minutos)
-permanece cada persona antes de ser atendida. Define la variable
-aleatoria que se genera.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(W\)</span> la variable aleatoria que
-representa el tiempo (en minutos) que permanece cada persona en la sala
-de espera.<br />
-El recorrido de <span class="math inline">\(W\)</span> es un intervalo
-de valores reales, por ejemplo, <span class="math inline">\(\{w \in
-\mathbb{R} : w \ge 0 \}\)</span>.</p>
-</div>
-</div>
-<div id="se-observa-cuántos-vehículos-pasan-por-una-calle-en-intervalos-de-10-minutos.-define-la-variable-aleatoria-correspondiente." class="section level3">
-<h3>16. Se observa cuántos vehículos pasan por una calle en intervalos
-de 10 minutos. Define la variable aleatoria correspondiente.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(V\)</span> la variable aleatoria que
-representa la cantidad de vehículos que pasan por una calle en
-intervalos de 10 minutos.<br />
-El recorrido de <span class="math inline">\(V\)</span> es el conjunto de
-los enteros no negativos <span class="math inline">\(\{0, 1, 2, 3,
-...\}\)</span>.</p>
-</div>
-</div>
-<div id="una-máquina-lanza-piezas-de-forma-automática.-define-una-variable-aleatoria-que-indique-si-una-pieza-es-defectuosa-o-no-defectuosa." class="section level3">
-<h3>17. Una máquina lanza piezas de forma automática. Define una
-variable aleatoria que indique si una pieza es “defectuosa” o “no
-defectuosa”.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(X\)</span> la variable aleatoria que
-indica si una pieza es defectuosa o no defectuosa.<br />
-El recorrido de <span class="math inline">\(X\)</span> puede ser <span class="math inline">\(\{0, 1\}\)</span> donde 0 representa “no
-defectuosa” y 1 representa “defectuosa”.</p>
-</div>
-</div>
-<div id="una-urna-contiene-5-bolas-numeradas-del-1-al-5.-se-extraen-dos-bolas-sin-reemplazo.-define-una-variable-aleatoria-que-represente-la-suma-de-los-números-obtenidos." class="section level3">
-<h3>18. Una urna contiene 5 bolas numeradas del 1 al 5. Se extraen dos
-bolas sin reemplazo. Define una variable aleatoria que represente la
-suma de los números obtenidos.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span> es todo
-el conjunto de pares de bolas posibles extraidas.<br />
-<span class="math inline">\(\Omega = \{(1,2), (1,3), (1,4), (1,5),
-(2,1), (2,3), (2,4), (2,5), (3,1), (3,2), (3,4), (3,5), (4,1), (4,2),
-(4,3), (4,5), (5,1), (5,2), (5,3), (5,4)\}\)</span>.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(S\)</span> la variable aleatoria que
-representa la suma de los números obtenidos al extraer dos bolas.<br />
-El recorrido de <span class="math inline">\(S\)</span> es <span class="math inline">\(\{3, 4, 5, 6, 7, 8, 9\}\)</span>.</p>
-</div>
-</div>
-<div id="se-lanza-un-dado-4-veces.-define-una-variable-aleatoria-que-represente-la-cantidad-de-veces-que-aparece-el-número-6." class="section level3">
-<h3>19. Se lanza un dado 4 veces. Define una variable aleatoria que
-represente la cantidad de veces que aparece el número 6.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span>
-correspondiente a lanzar un dado 4 veces es el conjunto de todos los
-resultados posibles.<br />
-<span class="math inline">\(\Omega = \{(1,1,1,1), (1,1,1,2), (1,1,1,3),
-(1,1,1,4), (1,1,1,5), (1,1,1,6), ..., (6,6,6,5),
-(6,6,6,6)\}\)</span>.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(C\)</span> la variable aleatoria que
-representa la cantidad de veces que aparece el número 6 al lanzar un
-dado 4 veces.</p>
-<p><span class="math display">\[
-C(x) =
-\begin{cases}
-0 &amp; \text{si } x \in \{\text{no 6, no 6, no 6, no 6}\} \\
-1 &amp; \text{si } x \in \{\text{6, no 6, no 6, no 6}, \text{no 6, 6, no
-6, no 6}, \text{no 6, no 6, 6, no 6}, \text{no 6, no 6, no 6, 6}\} \\
-2 &amp; \text{si } x \in \{\text{6, 6, no 6, no 6}, \text{6, no 6, 6, no
-6}, \text{6, no 6, no 6, 6}, \text{no 6, 6, 6, no 6}, \text{no 6, 6, no
-6, 6}, \text{no 6, no 6, 6, 6}\} \\
-3 &amp; \text{si } x \in \{\text{6, 6, 6, no 6}, \text{6, 6, no 6, 6},
-\text{6, no 6, 6, 6}, \text{no 6, 6, 6, 6}\} \\
-4 &amp; \text{si } x = \{6, 6, 6, 6\}
-\end{cases}
-\]</span></p>
-<p>El recorrido de <span class="math inline">\(C\)</span> es <span class="math inline">\(\{0, 1, 2, 3, 4\}\)</span>.</p>
-</div>
-</div>
-<div id="un-estudiante-responde-10-preguntas-de-verdaderofalso-al-azar.-define-una-variable-aleatoria-que-represente-la-cantidad-de-respuestas-correctas." class="section level3">
-<h3>20. Un estudiante responde 10 preguntas de verdadero/falso al azar.
-Define una variable aleatoria que represente la cantidad de respuestas
-correctas.</h3>
-<div style="border: 1px solid black; padding: 10px;">
-<p><strong>Espacio Muestral:</strong><br />
-El espacio muestral <span class="math inline">\(\Omega\)</span>
-correspondiente a responder 10 preguntas de verdadero/falso es el
-conjunto de todas las combinaciones posibles de respuestas.<br />
-<span class="math inline">\(\Omega = \{(V,V,V,V,V,V,V,V,V,V),
-(V,V,V,V,V,V,V,V,V,F), ..., (F,F,F,F,F,F,F,F,F,F)\}\)</span>, donde V
-representa verdadero y F representa falso.</p>
-<p><strong>Respuesta:</strong><br />
-Sea <span class="math inline">\(A\)</span> la variable aleatoria que
-representa la cantidad de respuestas correctas.</p>
-<p><span class="math display">\[
-A(x) =
-\begin{cases}
-0 &amp; \text{si } x = \{\text{FFFFFFFFFF}\} \\
-1 &amp; \text{si } x \in \{\text{VFFFFFFFFF}, \text{FVFFFFFFFF},
-\text{FFVFFFFFFF}, \text{FFFVFFFFFF}, \text{FFFFVFFFFF},
-\text{FFFFFVFFFF}, \text{FFFFFFVFFF}, \text{FFFFFFFFVF},
-\text{FFFFFFFFFV}, \text{FFFFFFFFFFV}\} \\
-2 &amp; \text{si } x \in \{\text{VVFFFFFFFF}, \text{VFVFFFFFFF}, ...,
-\text{FFFFFFFFVV}\} \\
-3 &amp; \text{si } x \in \{\text{VVVFFFFFFF}, \text{VVFVFFFFFF}, ...,
-\text{FFFFFFFVVV}\} \\
-4 &amp; \text{si } x \in \{\text{VVVVFFFFFF}, \text{VVVFVFFFFF}, ...,
-\text{FFFFFFVVVV}\} \\
-5 &amp; \text{si } x \in \{\text{VVVVVFFFFF}, \text{VVVVFVFFFF}, ...,
-\text{FFFFFVVVVV}\} \\
-6 &amp; \text{si } x \in \{\text{VVVVVVFFFF}, \text{VVVVVVFfff}, ...,
-\text{FFFFVVVVVV}\} \\
-7 &amp; \text{si } x \in \{\text{VVVVVVVFFF}, \text{VVVVVVVFFF}, ...,
-\text{FFFVVVVVVV}\} \\
-8 &amp; \text{si } x \in \{\text{VVVVVVVVFF}, \text{VVVVVVVVFV}, ...,
-\text{FFVVVVVVVV}\} \\
-9 &amp; \text{si } x \in \{\text{VVVVVVVVVF}, \text{VVVVVVVVVV}, ...,
-\text{FVVVVVVVVV}\} \\
-10 &amp; \text{si } x = \{\text{VVVVVVVVVV}\}
-\end{cases}
-\]</span></p>
-<p>El recorrido de <span class="math inline">\(A\)</span> es <span class="math inline">\(\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}\)</span>.</p>
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 10
+preguntas.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>): Para
+una pregunta de opción múltiple respondida al azar con
+(<strong>asumiendo</strong>) 4 opciones y una correcta, la probabilidad
+de acertar es 1/4 = 0.25.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+<strong>Como máximo</strong> 4 respuestas correctas (<span class="math inline">\(X \le 4\)</span>). Esto incluye 0, 1, 2, 3 o 4
+respuestas correctas.</li>
+</ul>
+<p>La frase “como máximo” indica una probabilidad acumulativa, que se
+calcula directamente usando la función <code>pbinom</code>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 4, n = 10, p = 0.25
+cat(&quot;Resultado: &quot;, pbinom(4, 10, 0.25), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.9218731</code></pre>
 </div>
 </div>
 </div>

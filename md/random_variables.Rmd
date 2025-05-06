@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Ejercicios
+## Ejercicios Variables Aleatorias
 
 ### 1.  En una encuesta se pregunta a las personas por su color favorito. ¿Qué tipo de variable es esta?
 
@@ -181,9 +181,9 @@ Sea $R$ la variable aleatoria que representa la cantidad de bolas rojas extraíd
 $$
 X(x) =
 \begin{cases}
-0 & \text{si } x = RRR \\
-1 & \text{si } x \in \{RRA, RAR, RAA\} \\
-2 & \text{si } x \in \{ARR, ARA, AAR\} \\
+0 & \text{si } x = AAA \\
+1 & \text{si } x \in \{AAR, ARA, RAA\} \\
+2 & \text{si } x \in \{RRA, RAR, ARR\} \\
 3 & \text{si } x = AAA
 \end{cases}
 $$

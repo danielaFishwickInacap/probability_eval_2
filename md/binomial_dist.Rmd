@@ -1,0 +1,379 @@
+---
+title: "Evaluación 2 - Parte 2: Distribución Binomial"
+author: "Daniela Fishwick"
+date: "05/05/2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejercicios de Distribución Binomial
+
+### Pregunta 1: Prueba de Verdadero/Falso
+
+Una prueba tiene 20 preguntas de Verdadero/Falso. Si un estudiante responde al azar, ¿cuál es la probabilidad de obtener exactamente 10 respuestas correctas?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+* Número de ensayos (n): 20 preguntas.
+* Probabilidad de éxito (p): Para una pregunta de Verdadero/Falso respondida al azar, la probabilidad de acertar es 0.5 (o 50%).
+* Número de éxitos deseados (k): Exactamente 10 respuestas correctas.
+
+Necesitamos encontrar la probabilidad de exactamente $k$ éxitos, lo que corresponde a una **probabilidad exacta**. La función `dbinom` en R se utiliza para este propósito.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 10, n = 20, p = 0.5
+cat("Resultado: ", dbinom(10, 20, 0.5), "\n")
+```
+
+</div>
+
+### Pregunta 2: Bombillas Defectuosas
+
+La probabilidad de que una bombilla esté defectuosa es 0.1. Si se inspeccionan 15 bombillas, ¿cuál es la probabilidad de que exactamente 2 estén defectuosas?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+* Número de ensayos (n): 15 bombillas inspeccionadas.
+* Probabilidad de éxito (p): La probabilidad de que una bombilla esté defectuosa es 0.1.
+* Número de éxitos deseados (k): Exactamente 2 bombillas defectuosas.
+
+Estamos buscando la probabilidad de exactamente $k$ éxitos, que es una **probabilidad exacta**. Usamos la función `dbinom` en R.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 2, n = 15, p = 0.1
+cat("Resultado: ", dbinom(2, 15, 0.1), "\n")
+```
+
+</div>
+
+### Pregunta 3: Piezas de Fábrica
+
+En una fábrica, el 80% de las piezas están en buenas condiciones. Si se seleccionan 10 piezas al azar, ¿cuál es la probabilidad de que al menos 9 estén en buenas condiciones?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+* Número de ensayos (n): 10 piezas seleccionadas.
+* Probabilidad de éxito (p): La probabilidad de que una pieza esté en buenas condiciones es 0.8 (u 80%).
+* Número de éxitos deseados (k): Al menos 9 piezas en buenas condiciones. Esto significa $X \ge 9$, lo que incluye $X=9$ o $X=10$.
+
+La probabilidad de "al menos" indica un cálculo acumulativo. La función `pbinom` calcula la probabilidad de $X \le k$. Para encontrar $P(X \ge 9)$, podemos usar la regla del complemento: $P(X \ge 9) = 1 - P(X \le 8)$.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: n = 10, p = 0.8. Queremos P(X >= 9) = 1 - P(X <= 8)
+cat("Resultado: ", 1 - pbinom(8, 10, 0.8), "\n")
+```
+
+</div>
+
+### Pregunta 4: Efectividad de la Medicación
+
+Una medicación tiene una tasa de efectividad del 70%. Si se aplica a 12 pacientes, ¿cuál es la probabilidad de que como máximo 8 muestren mejoría?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+* Número de ensayos (n): 12 pacientes.
+* Probabilidad de éxito (p): La probabilidad de que un paciente muestre mejoría es 0.7 (o 70%).
+* Número de éxitos deseados (k): Como máximo 8 pacientes que muestran mejoría. Esto significa $X \le 8$.
+
+"Como máximo" indica una probabilidad acumulativa. La función `pbinom` en R calcula la probabilidad de $X \le k$.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 8, n = 12, p = 0.7
+cat("Resultado: ", pbinom(8, 12, 0.7), "\n")
+```
+
+</div>
+
+### Pregunta 5: Hogares que Reciclan
+
+En una comunidad, el 60% de los hogares reciclan. Si se seleccionan 10 hogares al azar, ¿cuál es la probabilidad de que exactamente 6 reciclen?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+* Número de ensayos (n): 10 hogares seleccionados.
+* Probabilidad de éxito (p): La probabilidad de que un hogar recicle es 0.6 (o 60%).
+* Número de éxitos deseados (k): Exactamente 6 hogares reciclan.
+
+Necesitamos encontrar la probabilidad de exactamente $k$ éxitos, que es una **probabilidad exacta**. Usamos la función `dbinom` en R.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 6, n = 10, p = 0.6
+cat("Resultado: ", dbinom(6, 10, 0.6), "\n")
+```
+
+</div>
+
+### Pregunta 6: Compra de Cliente
+
+La probabilidad de que un cliente compre un producto al visitar una tienda es 0.3. ¿Cuál es la probabilidad de que, en 5 visitas, compre exactamente 2 veces?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+*   Número de ensayos ($n$): 5 visitas.
+*   Probabilidad de éxito ($p$): Probabilidad de comprar = 0.3.
+*   Número de éxitos deseados ($k$): Exactamente 2 compras.
+
+Necesitamos encontrar la **probabilidad exacta** de exactamente $k$ éxitos, lo que se calcula con la función `dbinom`.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 2, n = 5, p = 0.3
+cat("Resultado: ", dbinom(2, 5, 0.3), "\n")
+```
+
+</div>
+
+### Pregunta 7: Uso de Bicicleta
+
+En una encuesta, se pregunta a las personas si usan bicicleta. Se sabe que el 45% sí lo hace. Si se encuesta a 8 personas, ¿cuál es la probabilidad de que al menos 5 la usen?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+*   Número de ensayos ($n$): 8 personas encuestadas.
+*   Probabilidad de éxito ($p$): Probabilidad de usar bicicleta = 0.45.
+*   Número de éxitos deseados ($k$): **Al menos** 5 la usan ($X \ge 5$). Esto incluye los casos en los que 5, 6, 7 u 8 personas usan bicicleta.
+
+La frase "al menos" indica una probabilidad acumulativa. La función `pbinom` calcula $P(X \le k)$. Para encontrar $P(X \ge 5)$, usamos la regla del complemento: $P(X \ge 5) = 1 - P(X \le 4)$.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: n = 8, p = 0.45. Queremos P(X >= 5) = 1 - P(X <= 4)
+cat("Resultado: ", 1 - pbinom(4, 8, 0.45), "\n")
+```
+
+</div>
+
+### Pregunta 8: Defectos de Fábrica
+
+En una línea de ensamblaje, el 5% de los productos salen con un defecto. ¿Cuál es la probabilidad de que, al revisar 20 productos, ninguno esté defectuoso?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+*   Número de ensayos ($n$): 20 productos revisados.
+*   Probabilidad de éxito ($p$): Probabilidad de que un producto sea defectuoso = 0.05.
+*   Número de éxitos deseados ($k$): Exactamente 0 productos defectuosos.
+
+Necesitamos encontrar la **probabilidad exacta** de exactamente $k$ éxitos ($X=0$), usando la función `dbinom`.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 0, n = 20, p = 0.05
+cat("Resultado: ", dbinom(0, 20, 0.05), "\n")
+```
+
+</div>
+
+### Pregunta 9: Moneda Sesgada
+
+Una moneda "cargada" tiene una probabilidad de 0.6 de salir cara. ¿Cuál es la probabilidad de obtener al menos 3 caras en 5 lanzamientos?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+*   Número de ensayos ($n$): 5 lanzamientos.
+*   Probabilidad de éxito ($p$): Probabilidad de obtener cara = 0.6.
+*   Número de éxitos deseados ($k$): **Al menos** 3 caras ($X \ge 3$). Esto incluye 3, 4 o 5 caras.
+
+El término "al menos" indica una probabilidad acumulativa. Usamos la regla del complemento con `pbinom`: $P(X \ge 3) = 1 - P(X \le 2)$.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: n = 5, p = 0.6. Queremos P(X >= 3) = 1 - P(X <= 2)
+cat("Resultado: ", 1 - pbinom(2, 5, 0.6), "\n")
+```
+
+</div>
+
+
+### Pregunta 10: Examen de Estudiante
+
+Un estudiante responde 10 preguntas de opción múltiple al azar. ¿Cuál es la probabilidad de que obtenga como máximo 4 preguntas correctas?
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+*   Número de ensayos ($n$): 10 preguntas.
+*   Probabilidad de éxito ($p$): Para una pregunta de opción múltiple respondida al azar con (**asumiendo**) 4 opciones y una correcta, la probabilidad de acertar es 1/4 = 0.25.
+*   Número de éxitos deseados ($k$): **Como máximo** 4 respuestas correctas ($X \le 4$). Esto incluye 0, 1, 2, 3 o 4 respuestas correctas.
+
+La frase "como máximo" indica una probabilidad acumulativa, que se calcula directamente usando la función `pbinom`.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: k = 4, n = 10, p = 0.25
+cat("Resultado: ", pbinom(4, 10, 0.25), "\n")
+```
+
+</div>
+
+### Pregunta 11: Mínimo de Éxitos (Cuantil)
+
+¿Cuál es el valor mínimo de $k$ tal que la probabilidad acumulada de obtener como máximo $k$ éxitos en $n = 12$ intentos, con $p = 0.75$, es al menos del 90%?
+
+Este problema pregunta por el número de éxitos ($k$) correspondiente a un umbral de probabilidad acumulada dado. Este es un problema de cuantil en el contexto de la distribución binomial.
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
+*   Número de ensayos ($n$): 12 intentos.
+*   Probabilidad de éxito ($p$): 0.75.
+*   Probabilidad acumulada deseada ($q$): Al menos 90% (0.90). Estamos buscando el entero más pequeño $k$ tal que $P(X \le k) \ge 0.90$.
+
+La función `qbinom` se utiliza para este propósito.
+
+**Cálculo en R:**
+
+```{r}
+# Parámetros: q = 0.90, n = 12, p = 0.75
+cat("Resultado: ", qbinom(0.90, 12, 0.75), "\n")
+```
+
+</div>
+
+### Pregunta 12: Mínimo de Piezas Defectuosas (Cuantil)
+
+Una máquina produce un 85% de piezas buenas. ¿Cuál es el número mínimo esperado de piezas defectuosas en 10 intentos para asegurar al menos un 80% de probabilidad acumulada?
+
+**Datos:**
+Esta pregunta pide un cuantil para el número de piezas *defectuosas*.
+-   Número de ensayos ($n$): 10 intentos (piezas).
+-   Probabilidad de éxito ($p$): Probabilidad de que una pieza sea *buena* = 0.85.
+-   Probabilidad de *fracaso* ($1-p$): Probabilidad de que una pieza sea *defectuosa* = 1 - 0.85 = 0.15.
+-   Resultado deseado: Número mínimo de piezas *defectuosas* ($k$) tal que la probabilidad acumulada de tener *como máximo* $k$ piezas defectuosas sea al menos del 80% ($P(X \le k) \ge 0.80$), donde $X$ es el número de piezas defectuosas.
+
+Definimos el éxito como encontrar una pieza *defectuosa*, por lo que $p=0.15$. Estamos buscando el entero más pequeño $k$ tal que $P(X \le k) \ge 0.80$ usando la función `qbinom`.
+
+**Cálculo en R:**
+
+```R
+# Parámetros: q = 0.80, n = 10, p (defectuosa) = 0.15
+qbinom(0.80, 10, 0.15)
+```
+
+**Interpretación del Resultado:**
+El resultado del código R es el entero mínimo $k$ tal que la probabilidad de observar $k$ o menos piezas *defectuosas* en 10 ensayos con una tasa de defectos del 15% es al menos del 80%. Este valor representa el número máximo de piezas defectuosas que se podría esperar mientras se permanece dentro del rango inferior del 80% de los resultados.
+
+**Feedback:** Correcto y bien razonado el cambio de definición de "éxito" a "pieza defectuosa".
+
+---
+
+### Pregunta 13: Ausencia de Estudiante
+
+Se estima que un estudiante tiene una probabilidad de 0.9 de asistir a clase. Si hay 15 clases, ¿cuál es la probabilidad de que falte exactamente a 2?
+
+**Datos:**
+Este es un problema de distribución binomial.
+-   Número de ensayos ($n$): 15 clases.
+-   Probabilidad de éxito ($p$): Probabilidad de *asistir* = 0.9.
+-   Resultado deseado: Faltar exactamente a 2 clases. Si asisten o faltan, estos son los dos resultados. Si faltan a 2 de 15, deben *asistir* a 15 - 2 = 13 clases.
+
+Podemos definir el éxito como *asistir* a clase.
+-   Probabilidad de éxito ($p$): 0.9.
+-   Número de éxitos deseados ($k$): Exactamente 13 clases asistidas.
+-   Alternativamente, podríamos definir el éxito como *faltar* a clase.
+    -   Probabilidad de éxito ($p$): Probabilidad de faltar = 1 - 0.9 = 0.1.
+    -   Número de éxitos deseados ($k$): Exactamente 2 clases faltadas.
+    Ambos enfoques deberían dar el mismo resultado para una probabilidad exacta. Usemos el segundo enfoque (faltar como éxito).
+
+Necesitamos la **probabilidad puntual** de exactamente $k$ éxitos, usando `dbinom`.
+
+**Cálculo en R:**
+
+```R
+# Parámetros: k (faltado) = 2, n = 15, p (faltar) = 0.1
+dbinom(2, 15, 0.1)
+```
+
+**Interpretación del Resultado:**
+El resultado del código R es la probabilidad $P(X = 2)$ para una distribución binomial con $n=15$ y $p=0.1$. Este valor representa la probabilidad de que un estudiante falte exactamente a 2 de 15 clases, dada una probabilidad del 10% de faltar a cualquier clase individual.
+
+**Feedback:** Correcto y excelente el Datos de los dos enfoques posibles (asistir vs. faltar).
+
+---
+
+### Pregunta 14: Lanzamiento de Moneda Justa
+
+Una persona lanza una moneda 12 veces. ¿Cuál es la probabilidad de obtener cara exactamente 6 veces si la moneda es justa?
+
+**Datos:**
+Este es un problema de distribución binomial.
+-   Número de ensayos ($n$): 12 lanzamientos.
+-   Probabilidad de éxito ($p$): Probabilidad de obtener cara con una moneda justa = 0.5.
+-   Número de éxitos deseados ($k$): Exactamente 6 caras.
+
+Necesitamos la **probabilidad puntual** de exactamente $k$ éxitos ($X=6$), calculada usando `dbinom`.
+
+**Cálculo en R:**
+
+```R
+# Parámetros: k = 6, n = 12, p = 0.5
+dbinom(6, 12, 0.5)
+```
+
+**Interpretación del Resultado:**
+El resultado del código R es la probabilidad $P(X = 6)$ para una distribución binomial con $n=12$ y $p=0.5$. Este valor representa la probabilidad de obtener exactamente 6 caras en 12 lanzamientos de una moneda justa.
+
+**Feedback:** Correcto y conciso.
+
+---
+
+### Pregunta 15: Cumplimentación de Formulario
+
+En una prueba piloto, el 25% de los usuarios completa un formulario. ¿Cuál es la probabilidad de que, de 8 usuarios, al menos 5 lo completen?
+
+**Datos:**
+Este es un problema de distribución binomial.
+-   Número de ensayos ($n$): 8 usuarios.
+-   Probabilidad de éxito ($p$): Probabilidad de que un usuario complete el formulario = 0.25.
+-   Número de éxitos deseados ($k$): **Al menos** 5 lo completan ($X \ge 5$). Esto significa que 5, 6, 7 u 8 usuarios completan el formulario.
+
+La frase "al menos" requiere calcular una probabilidad acumulativa usando la regla del complemento con `pbinom`: $P(X \ge 5) = 1 - P(X \le 4)$.
+
+**Cálculo en R:**
+
+```R
+# Parámetros: n = 8, p = 0.25. Queremos P(X >= 5) = 1 - P(X <= 4)
+1 - pbinom(4, 8, 0.25)
+```
+
+**Interpretación del Resultado:**
+El resultado del código R es la probabilidad $P(X \ge 5)$ para una distribución binomial con $n=8$ y $p=0.25$. Este valor representa la probabilidad de que, de 8 usuarios, al menos 5 completen el formulario, dada una tasa de cumplimentación del 25% por usuario.
+
+**Feedback:** Correcto y bien explicado el uso de la regla del complemento.
