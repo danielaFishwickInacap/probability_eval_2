@@ -271,8 +271,12 @@ cat("Resultado: ", qbinom(0.90, 12, 0.75), "\n")
 
 Una máquina produce un 85% de piezas buenas. ¿Cuál es el número mínimo esperado de piezas defectuosas en 10 intentos para asegurar al menos un 80% de probabilidad acumulada?
 
-**Datos:**
 Esta pregunta pide un cuantil para el número de piezas *defectuosas*.
+
+<div style="border: 1px solid black; padding: 10px;">
+
+**Datos:**
+
 -   Número de ensayos ($n$): 10 intentos (piezas).
 -   Probabilidad de éxito ($p$): Probabilidad de que una pieza sea *buena* = 0.85.
 -   Probabilidad de *fracaso* ($1-p$): Probabilidad de que una pieza sea *defectuosa* = 1 - 0.85 = 0.15.
@@ -282,84 +286,72 @@ Definimos el éxito como encontrar una pieza *defectuosa*, por lo que $p=0.15$. 
 
 **Cálculo en R:**
 
-```R
+```{r}
 # Parámetros: q = 0.80, n = 10, p (defectuosa) = 0.15
-qbinom(0.80, 10, 0.15)
+cat("Resultado: ", qbinom(0.80, 10, 0.15), "\n")
 ```
 
-**Interpretación del Resultado:**
-El resultado del código R es el entero mínimo $k$ tal que la probabilidad de observar $k$ o menos piezas *defectuosas* en 10 ensayos con una tasa de defectos del 15% es al menos del 80%. Este valor representa el número máximo de piezas defectuosas que se podría esperar mientras se permanece dentro del rango inferior del 80% de los resultados.
-
-**Feedback:** Correcto y bien razonado el cambio de definición de "éxito" a "pieza defectuosa".
-
----
+</div>
 
 ### Pregunta 13: Ausencia de Estudiante
 
 Se estima que un estudiante tiene una probabilidad de 0.9 de asistir a clase. Si hay 15 clases, ¿cuál es la probabilidad de que falte exactamente a 2?
 
+<div style="border: 1px solid black; padding: 10px;">
+
 **Datos:**
-Este es un problema de distribución binomial.
+
 -   Número de ensayos ($n$): 15 clases.
 -   Probabilidad de éxito ($p$): Probabilidad de *asistir* = 0.9.
--   Resultado deseado: Faltar exactamente a 2 clases. Si asisten o faltan, estos son los dos resultados. Si faltan a 2 de 15, deben *asistir* a 15 - 2 = 13 clases.
+-   Resultado deseado: Faltar exactamente a 2 clases. Si faltan a 2 de 15, deben *asistir* a 15 - 2 = 13 clases.
 
-Podemos definir el éxito como *asistir* a clase.
--   Probabilidad de éxito ($p$): 0.9.
--   Número de éxitos deseados ($k$): Exactamente 13 clases asistidas.
--   Alternativamente, podríamos definir el éxito como *faltar* a clase.
-    -   Probabilidad de éxito ($p$): Probabilidad de faltar = 1 - 0.9 = 0.1.
-    -   Número de éxitos deseados ($k$): Exactamente 2 clases faltadas.
-    Ambos enfoques deberían dar el mismo resultado para una probabilidad exacta. Usemos el segundo enfoque (faltar como éxito).
+Podemos definir, alternativamente, el éxito como *faltar* a clase.
 
-Necesitamos la **probabilidad puntual** de exactamente $k$ éxitos, usando `dbinom`.
+-   Probabilidad de éxito ($p$): Probabilidad de faltar = 1 - 0.9 = 0.1.
+-   Número de éxitos deseados ($k$): Exactamente 2 clases faltadas.
+
+Necesitamos la **probabilidad exacta** de exactamente $k$ éxitos, usando `dbinom`.
 
 **Cálculo en R:**
 
-```R
+```{r}
 # Parámetros: k (faltado) = 2, n = 15, p (faltar) = 0.1
-dbinom(2, 15, 0.1)
+cat("Resultado: ", dbinom(2, 15, 0.1), "\n")
 ```
 
-**Interpretación del Resultado:**
-El resultado del código R es la probabilidad $P(X = 2)$ para una distribución binomial con $n=15$ y $p=0.1$. Este valor representa la probabilidad de que un estudiante falte exactamente a 2 de 15 clases, dada una probabilidad del 10% de faltar a cualquier clase individual.
+</div>
 
-**Feedback:** Correcto y excelente el Datos de los dos enfoques posibles (asistir vs. faltar).
-
----
-
-### Pregunta 14: Lanzamiento de Moneda Justa
+### Pregunta 14: Lanzamiento de Moneda
 
 Una persona lanza una moneda 12 veces. ¿Cuál es la probabilidad de obtener cara exactamente 6 veces si la moneda es justa?
 
+<div style="border: 1px solid black; padding: 10px;">
+
 **Datos:**
-Este es un problema de distribución binomial.
+
 -   Número de ensayos ($n$): 12 lanzamientos.
 -   Probabilidad de éxito ($p$): Probabilidad de obtener cara con una moneda justa = 0.5.
 -   Número de éxitos deseados ($k$): Exactamente 6 caras.
 
-Necesitamos la **probabilidad puntual** de exactamente $k$ éxitos ($X=6$), calculada usando `dbinom`.
+Necesitamos la **probabilidad exacta** de exactamente $k$ éxitos ($X=6$), calculada usando `dbinom`.
 
 **Cálculo en R:**
 
-```R
+```{r}
 # Parámetros: k = 6, n = 12, p = 0.5
-dbinom(6, 12, 0.5)
+cat("Resultado: ", dbinom(6, 12, 0.5), "\n")
 ```
 
-**Interpretación del Resultado:**
-El resultado del código R es la probabilidad $P(X = 6)$ para una distribución binomial con $n=12$ y $p=0.5$. Este valor representa la probabilidad de obtener exactamente 6 caras en 12 lanzamientos de una moneda justa.
+</div>
 
-**Feedback:** Correcto y conciso.
-
----
-
-### Pregunta 15: Cumplimentación de Formulario
+### Pregunta 15: Formulario
 
 En una prueba piloto, el 25% de los usuarios completa un formulario. ¿Cuál es la probabilidad de que, de 8 usuarios, al menos 5 lo completen?
 
+<div style="border: 1px solid black; padding: 10px;">
+
 **Datos:**
-Este es un problema de distribución binomial.
+
 -   Número de ensayos ($n$): 8 usuarios.
 -   Probabilidad de éxito ($p$): Probabilidad de que un usuario complete el formulario = 0.25.
 -   Número de éxitos deseados ($k$): **Al menos** 5 lo completan ($X \ge 5$). Esto significa que 5, 6, 7 u 8 usuarios completan el formulario.
@@ -368,12 +360,9 @@ La frase "al menos" requiere calcular una probabilidad acumulativa usando la reg
 
 **Cálculo en R:**
 
-```R
+```{r}
 # Parámetros: n = 8, p = 0.25. Queremos P(X >= 5) = 1 - P(X <= 4)
-1 - pbinom(4, 8, 0.25)
+cat("Resultado: ", 1 - pbinom(4, 8, 0.25), "\n")
 ```
 
-**Interpretación del Resultado:**
-El resultado del código R es la probabilidad $P(X \ge 5)$ para una distribución binomial con $n=8$ y $p=0.25$. Este valor representa la probabilidad de que, de 8 usuarios, al menos 5 completen el formulario, dada una tasa de cumplimentación del 25% por usuario.
-
-**Feedback:** Correcto y bien explicado el uso de la regla del complemento.
+</div>

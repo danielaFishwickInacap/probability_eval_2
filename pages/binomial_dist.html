@@ -599,6 +599,145 @@ cat(&quot;Resultado: &quot;, pbinom(4, 10, 0.25), &quot;\n&quot;)</code></pre>
 <pre><code>## Resultado:  0.9218731</code></pre>
 </div>
 </div>
+<div id="pregunta-11-mínimo-de-éxitos-cuantil" class="section level3">
+<h3>Pregunta 11: Mínimo de Éxitos (Cuantil)</h3>
+<p>¿Cuál es el valor mínimo de <span class="math inline">\(k\)</span>
+tal que la probabilidad acumulada de obtener como máximo <span class="math inline">\(k\)</span> éxitos en <span class="math inline">\(n
+= 12\)</span> intentos, con <span class="math inline">\(p =
+0.75\)</span>, es al menos del 90%?</p>
+<p>Este problema pregunta por el número de éxitos (<span class="math inline">\(k\)</span>) correspondiente a un umbral de
+probabilidad acumulada dado. Este es un problema de cuantil en el
+contexto de la distribución binomial.</p>
+<div style="border: 1px solid black; padding: 10px;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 12
+intentos.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+0.75.</li>
+<li>Probabilidad acumulada deseada (<span class="math inline">\(q\)</span>): Al menos 90% (0.90). Estamos buscando
+el entero más pequeño <span class="math inline">\(k\)</span> tal que
+<span class="math inline">\(P(X \le k) \ge 0.90\)</span>.</li>
+</ul>
+<p>La función <code>qbinom</code> se utiliza para este propósito.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: q = 0.90, n = 12, p = 0.75
+cat(&quot;Resultado: &quot;, qbinom(0.90, 12, 0.75), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  11</code></pre>
+</div>
+</div>
+<div id="pregunta-12-mínimo-de-piezas-defectuosas-cuantil" class="section level3">
+<h3>Pregunta 12: Mínimo de Piezas Defectuosas (Cuantil)</h3>
+<p>Una máquina produce un 85% de piezas buenas. ¿Cuál es el número
+mínimo esperado de piezas defectuosas en 10 intentos para asegurar al
+menos un 80% de probabilidad acumulada?</p>
+<p>Esta pregunta pide un cuantil para el número de piezas
+<em>defectuosas</em>.</p>
+<div style="border: 1px solid black; padding: 10px;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 10
+intentos (piezas).</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de que una pieza sea <em>buena</em> = 0.85.</li>
+<li>Probabilidad de <em>fracaso</em> (<span class="math inline">\(1-p\)</span>): Probabilidad de que una pieza sea
+<em>defectuosa</em> = 1 - 0.85 = 0.15.</li>
+<li>Resultado deseado: Número mínimo de piezas <em>defectuosas</em>
+(<span class="math inline">\(k\)</span>) tal que la probabilidad
+acumulada de tener <em>como máximo</em> <span class="math inline">\(k\)</span> piezas defectuosas sea al menos del 80%
+(<span class="math inline">\(P(X \le k) \ge 0.80\)</span>), donde <span class="math inline">\(X\)</span> es el número de piezas
+defectuosas.</li>
+</ul>
+<p>Definimos el éxito como encontrar una pieza <em>defectuosa</em>, por
+lo que <span class="math inline">\(p=0.15\)</span>. Estamos buscando el
+entero más pequeño <span class="math inline">\(k\)</span> tal que <span class="math inline">\(P(X \le k) \ge 0.80\)</span> usando la función
+<code>qbinom</code>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: q = 0.80, n = 10, p (defectuosa) = 0.15
+cat(&quot;Resultado: &quot;, qbinom(0.80, 10, 0.15), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  2</code></pre>
+</div>
+</div>
+<div id="pregunta-13-ausencia-de-estudiante" class="section level3">
+<h3>Pregunta 13: Ausencia de Estudiante</h3>
+<p>Se estima que un estudiante tiene una probabilidad de 0.9 de asistir
+a clase. Si hay 15 clases, ¿cuál es la probabilidad de que falte
+exactamente a 2?</p>
+<div style="border: 1px solid black; padding: 10px;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 15
+clases.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de <em>asistir</em> = 0.9.</li>
+<li>Resultado deseado: Faltar exactamente a 2 clases. Si faltan a 2 de
+15, deben <em>asistir</em> a 15 - 2 = 13 clases.</li>
+</ul>
+<p>Podemos definir, alternativamente, el éxito como <em>faltar</em> a
+clase.</p>
+<ul>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de faltar = 1 - 0.9 = 0.1.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+Exactamente 2 clases faltadas.</li>
+</ul>
+<p>Necesitamos la <strong>probabilidad exacta</strong> de exactamente
+<span class="math inline">\(k\)</span> éxitos, usando
+<code>dbinom</code>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k (faltado) = 2, n = 15, p (faltar) = 0.1
+cat(&quot;Resultado: &quot;, dbinom(2, 15, 0.1), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.2668959</code></pre>
+</div>
+</div>
+<div id="pregunta-14-lanzamiento-de-moneda" class="section level3">
+<h3>Pregunta 14: Lanzamiento de Moneda</h3>
+<p>Una persona lanza una moneda 12 veces. ¿Cuál es la probabilidad de
+obtener cara exactamente 6 veces si la moneda es justa?</p>
+<div style="border: 1px solid black; padding: 10px;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 12
+lanzamientos.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de obtener cara con una moneda justa = 0.5.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+Exactamente 6 caras.</li>
+</ul>
+<p>Necesitamos la <strong>probabilidad exacta</strong> de exactamente
+<span class="math inline">\(k\)</span> éxitos (<span class="math inline">\(X=6\)</span>), calculada usando
+<code>dbinom</code>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: k = 6, n = 12, p = 0.5
+cat(&quot;Resultado: &quot;, dbinom(6, 12, 0.5), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.2255859</code></pre>
+</div>
+</div>
+<div id="pregunta-15-formulario" class="section level3">
+<h3>Pregunta 15: Formulario</h3>
+<p>En una prueba piloto, el 25% de los usuarios completa un formulario.
+¿Cuál es la probabilidad de que, de 8 usuarios, al menos 5 lo
+completen?</p>
+<div style="border: 1px solid black; padding: 10px;">
+<p><strong>Datos:</strong></p>
+<ul>
+<li>Número de ensayos (<span class="math inline">\(n\)</span>): 8
+usuarios.</li>
+<li>Probabilidad de éxito (<span class="math inline">\(p\)</span>):
+Probabilidad de que un usuario complete el formulario = 0.25.</li>
+<li>Número de éxitos deseados (<span class="math inline">\(k\)</span>):
+<strong>Al menos</strong> 5 lo completan (<span class="math inline">\(X
+\ge 5\)</span>). Esto significa que 5, 6, 7 u 8 usuarios completan el
+formulario.</li>
+</ul>
+<p>La frase “al menos” requiere calcular una probabilidad acumulativa
+usando la regla del complemento con <code>pbinom</code>: <span class="math inline">\(P(X \ge 5) = 1 - P(X \le 4)\)</span>.</p>
+<p><strong>Cálculo en R:</strong></p>
+<pre class="r"><code># Parámetros: n = 8, p = 0.25. Queremos P(X &gt;= 5) = 1 - P(X &lt;= 4)
+cat(&quot;Resultado: &quot;, 1 - pbinom(4, 8, 0.25), &quot;\n&quot;)</code></pre>
+<pre><code>## Resultado:  0.02729797</code></pre>
+</div>
+</div>
 </div>
 
 
