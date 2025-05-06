@@ -1,6 +1,7 @@
 # Evaluación 2 - Probabilidad 🎲📊
 
-[Website Home 🏠](index.html)
+[Website Home 🏠](index.html)  
+[GitHub Repository 🔗](https://github.com/danielaFishwickInacap/probability_eval_2)
 
 Este repositorio contiene los archivos relacionados con la evaluación 2 del curso de Probabilidad, de la carrera de Ingeniería en Informática. A continuación, se encuentran los ejercicios resueltos divididos según tópico:
 
