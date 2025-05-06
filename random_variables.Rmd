@@ -1,0 +1,40 @@
+---
+title: "Evaluación 2 - Parte 1: Random Variables"
+author: "Daniela Fishwick"
+date: "05/05/2025"
+output: html_document
+---
+
+1. En una encuesta se pregunta a las personas por su color favorito. ¿Qué tipo de variable es esta?
+**Respuesta: Esta variable es de tipo (Insert type here).** [1, 4, 5]
+
+2. Se registra el número de hijos de cada familia en un barrio. ¿Qué tipo de variable es?
+**Respuesta: Esta variable es de tipo (Insert type here).** [1, 5-7]
+
+3. Se mide el tiempo (en segundos) que tarda una persona en recorrer 100 metros. ¿Qué tipo de variable es?
+**Respuesta: Esta variable es de tipo (Insert type here).** [1, 5, 8, 9]
+
+4. Una empresa registra el nivel de satisfacción de sus clientes como: “malo”, “regular”, “bueno”, “excelente”. ¿Qué tipo de variable es?
+**Respuesta: Esta variable es de tipo (Insert type here).** [1, 5, 10]
+
+5. Se lanza un dado una vez. Define una variable aleatoria que represente el número obtenido.
+**Respuesta: Sea $X$ la variable aleatoria. $X$ puede tomar los valores {1, 2, 3, 4, 5, 6}.** [2, 11-13]
+
+6. Se lanza una moneda tres veces. Define una variable aleatoria que represente la cantidad de caras obtenidas, de acuerdo a la definicion 1.10 Variable Aleatoria
+**Respuesta: Siguiendo la Definición 1.10 [9], sea $X$ la variable aleatoria que representa la cantidad de caras obtenidas. El espacio muestral $\Omega$ para lanzar una moneda tres times incluye todos los posibles resultados (e.g., HHH, HHT, etc.) [2, 9, 14]. $X$ asigna un número real a cada resultado basado en la cantidad de caras [2, 11, 15]. El recorrido de $X$ (los posibles valores) es {0, 1, 2, 3} [2, 11, 16-18].**
+
+7. En un experimento se mide la altura (en centímetros) de los estudiantes de una clase. Define la variable aleatoria que se genera, de acuerdo a la definicion 1.10 Variable Aleatoria
+**Respuesta: Siguiendo la Definición 1.10 [9], sea $X$ la variable aleatoria que representa la altura de un estudiante en centímetros. La altura es una medida que puede tomar cualquier valor dentro de un rango [1-3, 5, 8, 9]. Por lo tanto, $X$ es una variable aleatoria continua, y su recorrido sería un intervalo de números reales dentro del rango de alturas posibles para estudiantes [2, 9].**
+
+8. Se seleccionan 2 bombillas de una caja con 3 defectuosas (D) y 2 buenas (B). Define una variable aleatoria que cuente cuántas defectuosas se seleccionan, de acuerdo a la definicion 1.10 Variable Aleatoria
+**Respuesta: Siguiendo la Definición 1.10 [9], sea $X$ la variable aleatoria que cuenta el número de bombillas defectuosas seleccionadas. Se seleccionan 2 bombillas de un total de 5 (3D, 2B). El espacio muestral $\Omega$ includes combinations like DB, BD, DD, BB. The variable $X$ counts the number of defective bulbs:
+- Si se selecciona BB, $X=0$.
+- Si se selecciona DB o BD, $X=1$.
+- Si se selecciona DD, $X=2$.
+El recorrido de $X$ (los posibles valores para el número de bombillas defectuosas) es {0, 1, 2} [9].**
+
+9. En una tienda, se registran las marcas de teléfonos móviles comprados en un día. ¿Qué tipo de variable es?
+**Respuesta: Esta variable es de tipo (Insert type here).** [1, 3]
+
+10. Se mide la temperatura diaria (en °C) durante una semana. ¿Qué tipo de variable es?
+**Respuesta: Esta variable es de tipo (Insert type here).** [1, 5, 8]
